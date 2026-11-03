@@ -75,7 +75,7 @@ export function jsonLd(r: Route) {
 export function llms() {
   return `# ${site.name}
 
-> Brazilian Jiu-Jitsu academy in Rio Rancho, New Mexico, for toddlers (4–5), kids (6–13) and adults, Gi and No-Gi. Run by the Gonzales family since 2024: head instructor Abie Gonzales, black belt and two-time IBJJF No-Gi World Champion, twenty years in the U.S. Army, and his wife Laura Gonzales, former soldier and Army Combatives instructor. Your first class is free.
+> Brazilian Jiu-Jitsu academy in Rio Rancho, New Mexico, for toddlers (4–5), kids (6–13) and adults, Gi and No-Gi. Run by the Gonzales family since 2024: head instructor Abie Gonzales, black belt and two-time IBJJF No-Gi World Champion, twenty years in the U.S. Army, and his wife Laura Gonzales, a U.S. Army veteran (Army Combatives Level I and II) who coaches the kids program. Your first class is free.
 
 ## Contact
 - Address: 1630 Rio Rancho Blvd SE, Ste D, Rio Rancho, NM 87124 (Highway 528, just north of Intel)

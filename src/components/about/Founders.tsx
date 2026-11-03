@@ -19,14 +19,8 @@ export function Founders() {
     const root = ref.current!
     const ctx = gsap.context(() => {
       root.querySelectorAll<HTMLElement>('.fd').forEach((fd, i) => {
-        const tape = fd.querySelector<HTMLElement>('.tape')!, st = tape.querySelector('svg'), belt = fd.querySelector('.fd__belt')
-        gsap.set(st, { clipPath: 'inset(0 100% 0 0)' })
-        ScrollTrigger.create({ trigger: fd, start: 'top 75%', once: true, onEnter: () => {
-          gsap.timeline({ delay: i ? .1 : 0 })
-            .to(tape, { clipPath: 'inset(0 0% 0 0)', duration: .8, ease: 'power3.inOut' })
-            .to(st, { clipPath: 'inset(0 0% 0 0)', duration: 1.1, ease: 'none' }, '-=.1')
-          belt?.classList.add('on')
-        } })
+        const belt = fd.querySelector('.fd__belt')
+        ScrollTrigger.create({ trigger: fd, start: 'top 75%', once: true, onEnter: () => { setTimeout(() => belt?.classList.add('on'), i ? 100 : 0) } })
         if (motion) gsap.fromTo(fd.querySelector('.fd__photo img'), { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.4, ease: 'expo.inOut', scrollTrigger: { trigger: fd, start: 'top 75%', once: true } })
       })
     }, root)
@@ -49,7 +43,6 @@ export function Founders() {
             <a href="/contact" data-book data-prog={p.prog || undefined} aria-label={p.cta}></a>
           </figure>
           <div className="fd__body">
-            <div className="tape" aria-hidden="true"><span>{c.tape}</span><svg preserveAspectRatio="none" viewBox="0 0 200 40"><rect className="tape__st" x="4" y="4" width="192" height="32" rx="2" /></svg></div>
             <p className="fd__role">{p.role}</p>
             <h3 className="t t-2 d fd__name"><Lines lines={[p.name]} /></h3>
             {p.belt

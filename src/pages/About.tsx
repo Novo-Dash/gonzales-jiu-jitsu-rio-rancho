@@ -1,8 +1,8 @@
-import { hero } from '../content/about'
+import { hero, room } from '../content/about'
 import { site } from '../data/site'
 import { Crest } from '../components/about/Crest'
 import { Founders } from '../components/about/Founders'
-import { Room } from '../components/about/Room'
+import { Gallery } from '../components/home/Gallery'
 import { Page } from '../components/layout/Page'
 import { Call, Go } from '../components/shared/Cta'
 import { PageHero } from '../components/shared/PageHero'
@@ -15,7 +15,7 @@ export default function About() {
         cta={<><a className="cta" href="/contact" data-book>{hero.cta}<Go /></a><Call tel={site.tel}>{site.phone}</Call></>} />
       <Crest />
       <Founders />
-      <Room />
+      <Gallery content={room} id="room" />
     </Page>
   )
 }

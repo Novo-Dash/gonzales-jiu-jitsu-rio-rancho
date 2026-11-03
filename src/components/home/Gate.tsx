@@ -28,10 +28,13 @@ export function Gate({ from, to, ink, act, word, line, light }: Props) {
         const arch = g.querySelector('.gate__arch'), label = g.querySelector<HTMLElement>('.gate__label')!, side = g.querySelector('.gate__side')
         const to = getComputedStyle(g).getPropertyValue('--g-to').trim(), from = getComputedStyle(g).getPropertyValue('--g-from').trim()
         const tl = gsap.timeline({ scrollTrigger: { trigger: g, start: 'top top', end: 'bottom bottom', scrub: .4 } })
+        // the colour lives on the sticky stage here (mobile.css): it turns as soon as the arch covers the screen,
+        // and the dark sides are gone by then, so the room is wholly the new colour, no grey bands (03/11)
+        const stg = g.querySelector('.gate__stage')
         tl.fromTo(arch, { scale: .12 }, { scale: 9, ease: 'power1.in', duration: .8 }, 0)
-          .fromTo(g, { backgroundColor: from }, { backgroundColor: to, duration: .01, immediateRender: false }, .78)
+          .fromTo(stg, { backgroundColor: from }, { backgroundColor: to, duration: .01, immediateRender: false }, .52)
           .fromTo(label.firstElementChild, { scale: .94 }, { scale: 1.06, ease: 'none', duration: 1 }, 0)
-          .to(side, { autoAlpha: 0, duration: .2 }, .76)
+          .fromTo(side, { autoAlpha: 1 }, { autoAlpha: 0, duration: .22, ease: 'power1.in' }, .3)
         // the word stays (now in the new colour) and leaves with the stage: no empty screen between two acts
       })
     }, g)

@@ -19,9 +19,9 @@ export const staff = {
   title: ['In the room', '<em>every day.</em>'],
   // Abie is the passport above the staff (03/11): the staff is everyone else
   people: [
-    { id: 'laura', photo: 'laura', alt: 'Laura Gonzales on the podium with a medal', pos: '50% 22%', name: 'Laura Gonzales', role: 'Co-owner · Kids instructor' },
-    { id: 'tito', photo: 'tm-tito', alt: 'Tito Valdez tying his black belt', pos: '50% 60%', name: 'Tito Valdez', role: 'Black belt · Instructor' },
-    { id: 'adriana', photo: 'tm-adriana', alt: 'Adriana Rascon, black belt, in a white gi', pos: '50% 16%', name: 'Adriana Rascon', role: 'Black belt · Instructor' },
-    { id: 'brandon', photo: 'tm-brandon', alt: 'Brandon Romero holding his belt', pos: '50% 55%', name: 'Brandon Romero', role: 'Army veteran · Kids instructor' },
+    { id: 'laura', photo: 'coaches/Laura', alt: 'Laura Gonzales in a white gi, arms crossed', pos: '50% 20%', name: 'Laura Gonzales', role: 'Co-owner · Kids instructor' },
+    { id: 'tito', photo: 'coaches/Tito', alt: 'Tito Valdez in a white gi, arms crossed', pos: '50% 20%', name: 'Tito Valdez', role: 'Black belt · Instructor' },
+    { id: 'adriana', photo: 'coaches/Adriana', alt: 'Adriana Rascon in a white gi, arms crossed', pos: '50% 20%', name: 'Adriana Rascon', role: 'Black belt · Instructor' },
+    { id: 'brandon', photo: 'coaches/Brandon', alt: 'Brandon Romero in a white gi, arms crossed', pos: '50% 20%', name: 'Brandon Romero', role: 'Army veteran · Kids instructor' },
   ],
 }

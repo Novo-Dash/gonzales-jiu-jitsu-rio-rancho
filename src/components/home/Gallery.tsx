@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from 'react'
-import { gallery as c } from '../../content/home'
+import { gallery } from '../../content/home'
 import { gsap, listeners, motion, ScrollTrigger } from '../../motion/core'
 import { Act } from '../shared/Act'
 import { Ic } from '../shared/Cta'
@@ -12,7 +12,10 @@ import { Lines } from '../shared/Rich'
  * few seconds (not with reduced motion, not under the cursor, not off screen); drag, tap a card behind or use
  * the arrows to deal by hand.
  */
-export function Gallery() {
+type Deck = { act: string[]; title: string[]; sub: string; prev: string; next: string; label: string; photos: string[][] }
+
+/** `content` and `id` let another page deal its own photos (About · the room); the home's gallery by default. */
+export function Gallery({ content: c = gallery as Deck, id = 'mat' }: { content?: Deck; id?: string } = {}) {
   const ref = useRef<HTMLElement>(null)
   useLayoutEffect(() => {
     const root = ref.current!, stage = root.querySelector<HTMLElement>('.deck')!
@@ -25,11 +28,15 @@ export function Gallery() {
         cards.forEach((card, i) => {
           let off = (i - cur + n) % n; if (off > n / 2) off -= n
           // straight, across the full width (03/11): no turn, no drop; the cards behind step out to the edges
-          const a = Math.abs(off), shown = a <= (phone ? 2 : 4)
+          const a = Math.abs(off), shown = a <= (phone ? 2 : 3)
           const vars = {
             x: off * w * (phone ? .5 : .72) - Math.sign(off) * a * a * w * (phone ? .02 : .015),
             y: 0, rotate: 0, scale: 1 - a * .08,
-            autoAlpha: shown ? 1 : 0, zIndex: 20 - a,
+            // the far cards fade into the white: a veil on top, and the outermost one also fades out itself (the card
+            // behind it is already gone, so nothing shows through); the shadows go with them
+            autoAlpha: shown ? ([1, 1, 1, .5][a] ?? 0) : 0,
+            '--veil': [0, .14, .52, .86][a] ?? 1,
+            '--shadow': [1, .8, .45, 0][a] ?? 0, zIndex: 20 - a,
           }
           card.classList.toggle('is-on', off === 0); card.setAttribute('aria-hidden', off === 0 ? 'false' : 'true')
           if (instant || !motion) gsap.set(card, vars)
@@ -57,13 +64,17 @@ export function Gallery() {
     return () => { clearTimeout(timer); l.clear(); ctx.revert() }
   }, [])
   return (
-    <section className="gal sec screen" id="mat" aria-labelledby="gal-t" ref={ref}>
+    <section className="gal sec screen" id={id} aria-labelledby={`${id}-t`} ref={ref}>
       <div className="shell">
-        <div className="head head--c">
-          <div style={{ display: 'grid', justifyItems: 'center' }}>
+        <div className="head">
+          <div>
             <Act a={c.act} />
-            <h2 className="t t-2 d" id="gal-t"><Lines lines={c.title} /></h2>
-            <p className="sub rv" data-delay="1" style={{ textAlign: 'center', marginInline: 'auto' }}>{c.sub}</p>
+            <h2 className="t t-2 d" id={`${id}-t`}><Lines lines={c.title} /></h2>
+            <p className="sub rv" data-delay="1">{c.sub}</p>
+          </div>
+          <div className="gal__ctrl rv" data-delay="2">
+            <button type="button" className="rnd gal__prev" aria-label={c.prev}><Ic id="i-left" /></button>
+            <button type="button" className="rnd gal__next" aria-label={c.next}><Ic id="i-arrow" /></button>
           </div>
         </div>
       </div>
@@ -71,10 +82,6 @@ export function Gallery() {
         {c.photos.map(([p, alt]) => (
           <figure className="deck__card" key={p}><Img name={p} alt={alt} loading="lazy" sizes="(max-width:767px) 64vw, 30vw" draggable={false} /></figure>
         ))}
-      </div>
-      <div className="gal__ctrl rv" data-delay="2">
-        <button type="button" className="rnd gal__prev" aria-label={c.prev}><Ic id="i-left" /></button>
-        <button type="button" className="rnd gal__next" aria-label={c.next}><Ic id="i-arrow" /></button>
       </div>
     </section>
   )

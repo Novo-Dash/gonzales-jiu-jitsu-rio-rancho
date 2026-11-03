@@ -39,7 +39,7 @@ export function Staff() {
             <li className="inst" key={p.id}>
               <div className="inst__photo"><Img name={p.photo} alt={p.alt} loading="lazy" sizes="(max-width:1023px) 76vw, 22vw" style={{ objectPosition: p.pos }} /></div>
               <div className="inst__body">
-                <h3>{p.name}</h3>
+                <h3>{p.name.split(' ')[0]} <em>{p.name.split(' ').slice(1).join(' ')}</em></h3>
                 <span className="inst__role">{p.role}</span>
               </div>
             </li>

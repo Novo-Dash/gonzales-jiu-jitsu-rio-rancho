@@ -76,7 +76,7 @@ export const coachStage = {
   act: ['II', 'Competition · On the mat'],
   title: ['Abie <em>Gonzales.</em>'],
   rank: 'Black belt, two-time IBJJF No-Gi World Champion, twenty years in the U.S. Army.',
-  bio: 'Wrestling, MMA and a black belt he earned competing: IBJJF No-Gi world titles at purple and brown, second at the Master Worlds. Three tours in Iraq and a Bronze Star taught him the rest. On the mat he builds confidence first, in kids and adults alike.',
+  bio: 'Wrestling, MMA and a black belt he earned competing: IBJJF No-Gi world titles at purple and brown, second at the Master Worlds. Three tours in Iraq and a Bronze Star taught him the rest. On the mat he builds confidence first, in kids and adults alike.',
   cta: 'Train with Abie, free',
   first: 'Abie',
   last: ' Gonzales',

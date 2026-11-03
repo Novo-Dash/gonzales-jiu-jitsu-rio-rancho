@@ -22,7 +22,7 @@ export function Hero() {
         const tl = gsap.timeline({ scrollTrigger: { trigger: hero.querySelector('#heroPin'), start: 'top top', end: () => '+=' + innerHeight * 1.7, pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true, onUpdate: st => bg.classList.toggle('is-full', st.progress > .56) } })
         tl.fromTo(bg, { '--ay': '60svh', '--aw': aw, '--ah': '46svh', '--ar': '999px 999px 0px 0px' }, { '--ay': '0svh', '--aw': () => stage.clientWidth + 'px', '--ah': '100svh', '--ar': '0px 0px 0px 0px', ease: 'power2.inOut', duration: .55, immediateRender: true }, 0)
           .to('#heroBg img', { scale: 1.12, ease: 'none', duration: 1 }, 0)
-          .fromTo('#heroDim', { opacity: 0 }, { opacity: .58, ease: 'none', duration: 1 }, 0)   // darkens without repainting the photo
+          .fromTo('#heroDim', { opacity: 0 }, { opacity: .68, ease: 'power1.in', duration: .45 }, 0)   // dark before the crest words land (they start at .42); no photo repaint
           .to('#heroCopy', { autoAlpha: 0, y: -30, ease: 'power2.in', duration: .25 }, 0)
           .to('#heroVeil', { opacity: 0, duration: .3 }, .1)
           .to('#heroFade', { opacity: 1, duration: .35, ease: 'power1.in' }, .3)

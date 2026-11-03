@@ -21,7 +21,10 @@ export function Wall() {
         // the walk distance is measured once per refresh with the cards untransformed: their scale/rise
         // changes the track's scrollWidth every frame, and measuring live made the walk jump
         let D = 0
-        const measure = () => { const keep = track.style.transform; track.style.transform = ''; gsap.set(doors, { clearProps: 'transform' }); D = track.scrollWidth - innerWidth; track.style.transform = keep }
+        const measure = () => { const keep = track.style.transform; track.style.transform = ''; gsap.set(doors, { clearProps: 'transform' }); const last = doors[doors.length - 1]
+          // the walk goes on until the last card's centre reaches 55% of the screen, where it is fully lit (03/11:
+          // the cards got shorter and the track no longer carried the third one that far)
+          D = Math.max(track.scrollWidth - innerWidth, last.offsetLeft + last.offsetWidth / 2 - innerWidth * .55); track.style.transform = keep }
         measure()
         const st = ScrollTrigger.create({
           trigger: root.querySelector('#wallPin'), start: 'top top', end: () => '+=' + (D + innerHeight * .4), pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true,
@@ -48,7 +51,7 @@ export function Wall() {
         let D = 0, centers: number[] = []
         const measure = () => {
           const last = doors[doors.length - 1]
-          D = Math.max(0, last.offsetLeft + last.offsetWidth + parseFloat(getComputedStyle(track).paddingRight) - innerWidth)
+          D = Math.max(0, last.offsetLeft + last.offsetWidth + parseFloat(getComputedStyle(track).paddingRight) - innerWidth, last.offsetLeft + last.offsetWidth / 2 - innerWidth * .55)
           centers = doors.map(d => d.offsetLeft + d.offsetWidth / 2)
         }
         const walk = (progress: number) => {

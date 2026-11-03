@@ -2,7 +2,6 @@ import { useLayoutEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { nav } from '../../content/shared'
 import { site } from '../../data/site'
-import { ScrollTrigger } from '../../motion/core'
 import { Ic } from '../shared/Cta'
 import { Img } from '../shared/Img'
 
@@ -10,9 +9,12 @@ import { Img } from '../shared/Img'
 export function Nav({ page }: { page: string }) {
   useLayoutEffect(() => {
     const pnav = document.getElementById('pnav')!, modal = () => document.getElementById('modal')
-    let lastY = 0
-    const st = ScrollTrigger.create({ onUpdate: s => { const y = s.scroll(); pnav.classList.toggle('is-hidden', y > lastY && y > 400 && !modal()?.classList.contains('open')); lastY = y } })
-    return () => { st.kill(); pnav.classList.remove('is-hidden') }
+    // a plain scroll listener over the whole page (03/11): the triggerless ScrollTrigger only reacted inside the
+    // range measured at its last refresh, so once the page grew the nav stayed hidden from act III down
+    let lastY = scrollY
+    const onScroll = () => { const y = scrollY; if (Math.abs(y - lastY) < 2) return; pnav.classList.toggle('is-hidden', y > lastY && y > 400 && !modal()?.classList.contains('open')); lastY = y }
+    addEventListener('scroll', onScroll, { passive: true })
+    return () => { removeEventListener('scroll', onScroll); pnav.classList.remove('is-hidden') }
   }, [])
   return (
     <nav className="pnav" id="pnav" aria-label="Main">

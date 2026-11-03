@@ -63,7 +63,7 @@ export function Champion({ more }: { more?: { label: string; href: string } } = 
           <div className="pass__page">
             <div className="pass__hd"><span>{p.hd[0]}</span><span>{p.hd[1]}</span></div>
             <div className="pass__id">
-              <div className="pass__photo"><Img name="abie" alt={p.photoAlt} loading="lazy" sizes="(max-width:1023px) 45vw, 240px" /><Img className="pass__crest" name="logo-white" alt="" loading="lazy" sizes="120px" /></div>
+              <div className="pass__photo"><Img name="3x4" alt={p.photoAlt} loading="lazy" sizes="(max-width:1023px) 45vw, 240px" /><Img className="pass__crest" name="logo-white" alt="" loading="lazy" sizes="120px" /></div>
               <dl>
                 {p.rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
               </dl>

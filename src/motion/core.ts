@@ -27,7 +27,8 @@ export function initMotion() {
   // phones: the address bar showing/hiding is not a resize (the scenes are sized in svh)
   ScrollTrigger.config({ ignoreMobileResize: true })
   if (motion && fine) {
-    const l = new Lenis({ lerp: 0.085, smoothWheel: true })
+    // a longer, softer glide than the prototype's 0.085 (03/11, Adryan: "quero scroll suave")
+    const l = new Lenis({ lerp: 0.065, smoothWheel: true, wheelMultiplier: 0.95, touchMultiplier: 1.4 })
     lenis = l
     l.on('scroll', ScrollTrigger.update)
     gsap.ticker.add(t => l.raf(t * 1000))

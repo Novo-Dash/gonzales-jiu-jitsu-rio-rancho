@@ -55,7 +55,7 @@ html:not(.js) .stamps{display:none}
 
 /* Home · zoom: no compositor layer per photo, so each is drawn sharp at the scale it reaches (03/11) */
 .zoom__item{will-change:auto}
-.zoom__stick.is-moving .zoom__item{will-change:transform}
+/* (is-moving no longer composites the photos: a layer rastered at its first, small scale pixelated mid-zoom) */
 
 /* Home · Served: a top fade fixed to the section (the flag drifts under it), from the colour the gate above
    ends on: ink where the gates animate, white where they stay still (phones) (03/11) */
@@ -324,3 +324,91 @@ html:not(.js) .fd__bar{transform:none}
 /* the footer video: no filter recomputed on every video frame; the same darkening from a still layer */
 .foot__video{filter:none}
 .foot__band::before{content:"";position:absolute;inset:0;z-index:1;background:rgba(0,0,0,.2);pointer-events:none}
+
+/* Home · hero: the three crest words read over the colour photo (03/11) */
+.stamp{text-shadow:0 2px 24px rgba(0,0,0,.45)}
+
+/* On the mat · the cut-out (03/11): public/img/competition/coach.webp, transparent, standing on the bottom edge
+   (cut at the waist); the crest logo behind him instead of the giant name; no fade mask any more. */
+.cst__stage{align-items:flex-end;padding:0;margin-bottom:0}
+.cst{padding-bottom:0}
+.cst__cut{height:100%;width:auto;max-width:92vw;object-fit:contain;object-position:50% 100%;filter:none;-webkit-mask-image:none;mask-image:none;margin-bottom:0;display:block}
+.cst__logo{position:absolute;left:50%;top:50%;z-index:0;width:min(78vw,880px);height:auto;max-width:none;translate:-50% -54%;opacity:.95;pointer-events:none}
+@media (max-width:1023px){.cst__logo{width:94vw;translate:-50% -46%}}
+.cst__logo{top:34%;translate:-50% -50%}
+@media (max-width:1023px){.cst__stage{margin-top:clamp(36px,6svh,56px)}.cst__logo{top:36%;translate:-50% -50%}}
+
+/* On the mat · the cut-out sits higher and dissolves at the waist into a floor: a soft shadow and a white fade
+   across the stage's foot, so the next section begins from the floor, not from a cut photo (03/11) */
+.cst__stage{overflow:hidden}
+.cst__cut{position:relative;z-index:1;margin-bottom:clamp(-20px,-2svh,-8px);height:94%}
+.cst__floor{position:absolute;left:0;right:0;bottom:0;z-index:2;height:clamp(110px,22svh,220px);background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.75) 55%,#fff 92%);pointer-events:none}
+.cst__floor::before{content:"";position:absolute;left:50%;bottom:22%;width:min(56vw,560px);height:46px;translate:-50% 0;border-radius:50%;background:radial-gradient(closest-side,rgba(17,17,16,.22),rgba(17,17,16,0));z-index:-1}
+.cst__body{text-wrap:pretty}
+/* On the mat · a real divider (03/11, Adryan): no white fade and no shadow; a full-width ink band at the foot of
+   the stage, stitched like a black belt, with a red bar like its tip. Abie stands behind it; the band covers
+   the cut at his waist and closes the section. */
+.cst__floor{height:clamp(54px,7svh,76px);background:var(--ink);box-shadow:0 -18px 40px -24px rgba(17,17,16,.55)}
+.cst__floor::before{left:0;right:0;bottom:auto;top:50%;width:auto;height:0;translate:0 -50%;border-radius:0;background:none;border-top:1.5px dashed rgba(255,255,255,.22);z-index:0}
+.cst__floor::after{content:"";position:absolute;top:0;bottom:0;right:12%;width:clamp(70px,9vw,140px);background:var(--red)}
+.cst__cut{margin-bottom:clamp(-60px,-5svh,-30px)}
+.cst__cut{margin-bottom:clamp(-10px,-1svh,-4px)}
+
+/* About · The crest as "On the mat" (03/11, Adryan): the title larger on the left with the review quote under
+   it, the three words on the right; below, the crest logo big (rising with the scroll) with Abie beside it
+   (coach2.webp), standing on the belt divider. */
+.cst--crest .cst__t{font-size:clamp(48px,min(5.8vw,10svh),110px)}
+.cst--crest .cst__rank{font:italic 400 clamp(18px,1.4vw,22px)/1.35 var(--f-i);letter-spacing:0;text-transform:none;color:var(--ink);max-width:28ch}
+.cst--crest .cst__rank span{display:block;margin-top:8px;font:600 11px/1 var(--f-s);font-style:normal;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.cst--crest .crest__words{margin-top:0;text-align:left;justify-self:end;width:100%}
+.cst--crest .cst__side{justify-items:stretch;text-align:left}
+@media (min-width:1024px){.cst--crest .cst__head{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}.cst--crest .cst__side{grid-column:2}}
+.cst--crest .cst__logo{left:40%;width:min(64vw,760px)}
+.cst--crest .cst__cut{margin-left:28%;height:88%}
+@media (max-width:1023px){.cst--crest .cst__logo{left:50%;width:92vw;top:30%}.cst--crest .cst__cut{margin-left:0;height:80%}}
+
+/* the crest ring back, in the logo's place (03/11): big, left of Abie, turning with the scroll */
+.cst--crest .cst__seal{position:absolute;left:36%;top:46%;z-index:0;width:min(46vw,600px);aspect-ratio:1;translate:-50% -50%;opacity:1}
+@media (max-width:1023px){.cst--crest .cst__seal{left:50%;top:34%;width:min(88vw,420px);order:0;margin:0}}
+
+/* About · Crest: the ring alone, centred (03/11, Adryan: no coach here) */
+.cst--crest .cst__stage{height:clamp(480px,78svh,760px)}
+.cst--crest .cst__seal{left:50%;top:48%;width:min(56vw,620px)}
+@media (max-width:1023px){.cst--crest .cst__stage{height:clamp(380px,100vw,480px)}.cst--crest .cst__seal{top:46%;width:min(86vw,420px)}}
+.cst--crest .cst__seal{top:45%;width:min(50vw,560px)}
+
+/* Home · What they come home with on phones (03/11, Adryan): a row you swipe instead of four strips. Big cards,
+   the drawing on top at full width, the copy under it, the next card peeking at the edge. */
+@media (max-width:767px){
+  .kgrid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1 * var(--gl));padding:6px var(--gl) 18px;scroll-padding-inline:var(--gl);scrollbar-width:none;perspective:none}
+  .kgrid::-webkit-scrollbar{display:none}
+  .kc,.kc[data-tilt]{flex:none;width:76vw;max-width:320px;display:flex;flex-direction:column;gap:6px;padding:12px 12px 18px;scroll-snap-align:start;grid-template-columns:none;align-items:stretch}
+  .kc__art{grid-row:auto;width:100%;aspect-ratio:4/3;margin:0 0 10px}
+  .kc h3{font-size:22px;padding-inline:4px}
+  .kc p{font-size:15px;padding-inline:4px}
+  .kc__n{top:20px;right:22px;z-index:2;color:#fff;opacity:.85}
+}
+
+/* Phones: no fixed booking bar at the bottom (03/11, Adryan) */
+@media (max-width:759px){.bar{display:none}}
+/* The Position drawing's balance board shares the class name of the schedule board, which phones hide
+   (display:none): the board vanished and the kid floated. The drawing keeps its board (03/11). */
+.kc__art .board{display:inline}
+
+/* The mat · head on two columns (title left, arrows right), room for the cards' shadow, the far cards fading
+   (Gallery.tsx) on top of the edge mask (03/11) */
+.gal__ctrl{margin:0;position:static;justify-content:flex-end;align-self:end}
+.deck{height:calc(var(--cw) * 1.25 + 130px);margin-bottom:calc(-1 * clamp(40px,6svh,70px))}
+
+.deck__card::after{content:"";position:absolute;inset:0;background:#fff;opacity:var(--veil,0);pointer-events:none}
+/* Served cards without the insignias (03/11, Adryan) */
+.scard .insig{display:none}
+.deck__card,.deck__card.is-on{box-shadow:0 30px 60px -28px rgba(17,17,16,calc(.45 * var(--shadow,1))),0 0 0 1px rgba(17,17,16,calc(.06 * var(--shadow,1)))}
+/* /instructors · the staff on pure black, the same black as the portraits' backdrop (03/11, Adryan) */
+.insts{background:#000}
+.insts::before{background:linear-gradient(180deg,#000,rgba(0,0,0,0))}
+/* The final CTA and footer on pure black too, its fade into the video from the same black (03/11, Adryan) */
+.foot{background:#000}
+.foot__band{background:#000}
+.foot__fade{background:linear-gradient(180deg,#000 0%,rgba(0,0,0,.92) 14%,rgba(0,0,0,.5) 28%,rgba(0,0,0,0) 40%)}
+.inst h3 em{font:italic 400 1.05em/1 var(--f-i);letter-spacing:-.01em;font-variation-settings:"opsz" 96,"SOFT" 40}

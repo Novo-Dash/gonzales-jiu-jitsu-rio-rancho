@@ -42,7 +42,7 @@ export function CoachStage() {
       <div className="cst__stage">
         <span className="cst__ring cst__ring--l" aria-hidden="true"></span><span className="cst__ring cst__ring--r" aria-hidden="true"></span>
         {/* the academy's crest behind him (03/11, in place of the name in giant type); he stands on the bottom edge */}
-        <Img name="logo-ink" alt="" aria-hidden="true" className="cst__logo" sizes="(min-width:1024px) 900px, 90vw" />
+        <Img name="logo-ink" alt="" aria-hidden="true" className="cst__logo" sizes="(min-width:1024px) 900px, 90vw" loading="lazy" decoding="async" />
         <i className="cst__floor" aria-hidden="true"></i>
         <img src="/img/competition/coach.webp" width="741" height="1351" alt={c.cutAlt} className="cst__cut" loading="lazy" decoding="async" />
       </div>

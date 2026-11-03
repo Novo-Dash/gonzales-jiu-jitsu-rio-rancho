@@ -445,3 +445,17 @@ html:not(.js) .fd__bar{transform:none}
 /* Home · zoom line on phones: bigger, "Every age." on its own line (03/11, Adryan) */
 @media (max-width:1023px){.zoom__ctx b{font-size:clamp(46px,13.5vw,64px);line-height:.98}.zoom__ctx b em{display:block}}
 @media (max-width:1023px){.foot__links button{min-height:46px}}
+
+/* Home · hero, last beat (03/11): after the crest words, Abie's video ("Come on in"). Desktop: a portrait frame
+   in the middle of the darkened photo; phones: the whole screen. Hidden where the hero does not animate. */
+.hero__video{position:absolute;inset:0;z-index:4;display:none;place-items:center;pointer-events:none;opacity:0;visibility:hidden}
+.hero.is-live .hero__video{display:grid}
+.hero__video video{height:min(84svh,820px);width:auto;aspect-ratio:9/16;object-fit:cover;border-radius:24px;background:#000;box-shadow:0 40px 90px -40px rgba(0,0,0,.9);pointer-events:auto}
+.hero__sound{position:absolute;left:50%;bottom:calc((100svh - min(84svh,820px)) / 2 + 16px);translate:-50% 0;pointer-events:auto;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:rgba(0,0,0,.55);color:#fff;font:700 12px/1 var(--f-s);letter-spacing:.14em;text-transform:uppercase;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.hero__sound[aria-pressed="true"]{background:#fff;color:var(--ink)}
+@media (max-width:1023px) and (min-height:540px) and (prefers-reduced-motion:no-preference){
+  html.js .hero__pin{height:330svh}
+  html.js .hero__video{display:grid}
+  html.js .hero__video video{width:100%;height:100%;aspect-ratio:auto;border-radius:0}
+  html.js .hero__sound{bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+}

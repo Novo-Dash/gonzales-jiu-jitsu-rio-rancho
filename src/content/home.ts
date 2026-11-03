@@ -7,6 +7,9 @@ export const hero = {
   imgAlt: 'The Gonzales Jiu-Jitsu team on the mat in Rio Rancho',
   stamps: ['Competition', 'Family', 'Community'],
   stampsLine: 'Three words on the crest. Three reasons people train here.',
+  videoLabel: 'Abie Gonzales inviting you onto the mat',
+  soundOn: 'Sound on',
+  soundOff: 'Sound off',
 }
 
 export const gates = [

@@ -89,3 +89,6 @@
 - **Sobrenome dos instrutores em Fraunces itálico (03/11, pedido do Adryan)**, como as ênfases dos títulos.
 - **About · Founders com as fotos novas (03/11, pedido do Adryan)**: `coaches/Abie.webp` e `coaches/Laura.webp`.
 - **About · The room virou baralho (03/11, pedido do Adryan)**: o mesmo carrossel de cartas da home (componente `Gallery` com conteúdo próprio), 14 fotos da academia; título novo "A night *on our mat.*" com a review do Kenneth como subtítulo. As tiras de filme saíram.
+- **Títulos dos heros internos sem corte (03/11)**: no desktop as linhas não quebram; a fonte encolhe até a linha mais longa caber na coluna ("Coaches who are" era cortado pela máscara da linha em telas largas). Headline do The room: "Step onto *our mats.*" (pedido do Adryan).
+- **Celular: porta do hero colada embaixo (03/11)**: sem a barra fixa sobrava um vão sob a foto; a porta vai para o pé da primeira tela e a abertura sobe a partir de lá. **Mini semana**: em bloco estreito o AM/PM desce para baixo do horário.
+- **"One mat. *Every age.*" no celular (03/11, pedido do Adryan)**: maior e em duas linhas.

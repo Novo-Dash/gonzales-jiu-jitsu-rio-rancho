@@ -49,7 +49,7 @@ export const founders = {
 // About · the room as a deck of cards, like the home's (03/11, Adryan)
 export const room = {
   act: ['III', 'About · The room'],
-  title: ['A night', '<em>on our mat.</em>'],
+  title: ['Step onto', '<em>our mats.</em>'],
   sub: '“After my daughter faced bullying at school, we enrolled her in jiu-jitsu with Professor Abie, Coach Laura, and Coach Brandon. The transformation has been incredible.” Kenneth B., parent',
   prev: 'Previous photos',
   next: 'Next photos',

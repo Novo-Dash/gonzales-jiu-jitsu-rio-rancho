@@ -18,6 +18,21 @@ const Chevron = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
  */
 export function PageHero({ id, crumb, kick, h1, lead, cta, micro, img }: Props) {
   const ref = useRef<HTMLElement>(null)
+  // the title keeps its lines unbroken on desktop: the font shrinks just enough for the longest line to fit the
+  // copy column (03/11: "Coaches who are" ran past it and was cut by the line mask)
+  useLayoutEffect(() => {
+    const h1 = ref.current!.querySelector<HTMLElement>('.pghero__h1')!
+    const fit = () => {
+      h1.style.removeProperty('font-size')
+      if (!matchMedia('(min-width:1024px)').matches) return
+      const avail = h1.clientWidth
+      const widest = Math.max(...[...h1.querySelectorAll<HTMLElement>('.ln > span')].map(s => s.scrollWidth))
+      if (widest > avail) h1.style.fontSize = `${(parseFloat(getComputedStyle(h1).fontSize) * avail) / widest - 1}px`
+    }
+    fit(); document.fonts?.ready.then(fit)
+    addEventListener('resize', fit)
+    return () => removeEventListener('resize', fit)
+  }, [h1])
   useLayoutEffect(() => {
     const h = ref.current!
     if (!motion) return

@@ -40,7 +40,7 @@ export function Hero() {
         const w0 = () => stage.clientWidth - 2 * parseFloat(getComputedStyle(copy).paddingLeft)
         const tl = gsap.timeline({ scrollTrigger: { trigger: hero.querySelector('#heroPin'), start: 'top top', end: 'bottom bottom', scrub: .5, invalidateOnRefresh: true } })
         tl.fromTo(bg, { y: 0, width: w0, height: () => w0() * .75, borderRadius: () => `${w0() / 2}px ${w0() / 2}px 0px 0px` },
-          { y: () => -(copy.offsetTop + copy.offsetHeight), width: () => stage.clientWidth, height: () => stage.clientHeight, borderRadius: '0px 0px 0px 0px', ease: 'power2.inOut', duration: .5, immediateRender: true }, 0)
+          { y: () => -bg.offsetTop, width: () => stage.clientWidth, height: () => stage.clientHeight, borderRadius: '0px 0px 0px 0px', ease: 'power2.inOut', duration: .5, immediateRender: true }, 0)
           .fromTo(copy, { autoAlpha: 1, y: 0 }, { autoAlpha: 0, y: -40, ease: 'power2.in', duration: .24 }, 0)
           .fromTo('#heroBg img', { scale: 1.04, opacity: 1 }, { scale: 1.14, opacity: .5, ease: 'none', duration: 1 }, 0)
           .to('#heroVeil', { opacity: 0, duration: .3 }, .1)

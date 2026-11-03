@@ -7,7 +7,6 @@ import { Act } from '../shared/Act'
 import { Ic } from '../shared/Cta'
 import { Img } from '../shared/Img'
 import { Lines } from '../shared/Rich'
-import { InsigArmy, InsigFire } from './Insignia'
 
 /**
  * ACT III · SERVED (03/11): two cards side by side, each a full photograph (folded flags for the veterans,
@@ -27,8 +26,8 @@ export function Served() {
     return () => { offTilt(); ctx.revert() }
   }, [])
   const cards = [
-    { k: 'boots', d: c.boots, photo: 'serve-vets', alt: 'Service members in white gloves holding folded American flags', pos: '40% 50%', Insig: InsigArmy, href: site.weDefy, ext: true, icon: 'i-out' },
-    { k: 'fire', d: c.fire, photo: 'serve-fire', alt: 'Two firefighters in helmets and breathing masks in the smoke', pos: '50% 40%', Insig: InsigFire, href: '#book', ext: false, icon: 'i-arrow' },
+    { k: 'boots', d: c.boots, photo: 'serve-vets', alt: 'Service members in white gloves holding folded American flags', pos: '40% 50%', href: site.weDefy, ext: true, icon: 'i-out' },
+    { k: 'fire', d: c.fire, photo: 'serve-fire', alt: 'Two firefighters in helmets and breathing masks in the smoke', pos: '50% 40%', href: '#book', ext: false, icon: 'i-arrow' },
   ]
   return (
     <section className="serve sec screen" id="act3" aria-labelledby="sv-t" ref={ref}>
@@ -42,10 +41,9 @@ export function Served() {
           </div>
         </div>
         <div className="serve__grid">
-          {cards.map(({ k, d, photo, alt, pos, Insig, href, ext, icon }, i) => (
+          {cards.map(({ k, d, photo, alt, pos, href, ext, icon }, i) => (
             <article className={`scard scard--${k} rv`} data-delay={i ? '1' : undefined} data-tilt key={k}>
               <div className="scard__photo"><Img name={photo} alt={alt} loading="lazy" sizes="(max-width:899px) 92vw, 46vw" style={{ objectPosition: pos }} /></div>
-              <div className="insig" aria-hidden="true"><Insig /></div>
               <div className="scard__body">
                 <span className="scard__k">{d.k}</span>
                 <h3>{d.h}</h3><p>{d.p}</p>

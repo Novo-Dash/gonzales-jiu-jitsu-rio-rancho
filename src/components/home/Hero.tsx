@@ -1,0 +1,81 @@
+import { useLayoutEffect, useRef } from 'react'
+import { hero as c } from '../../content/home'
+import { gsap, LIVE, motion, SCENE, SHORT } from '../../motion/core'
+import { Go } from '../shared/Cta'
+import { Img } from '../shared/Img'
+import { Lines } from '../shared/Rich'
+
+/** HERO: the doorway opens into the whole screen, then the three words of the crest (home.js HERO). */
+export function Hero() {
+  const ref = useRef<HTMLElement>(null)
+  useLayoutEffect(() => {
+    const hero = ref.current!
+    const mm = gsap.matchMedia()
+    const ctx = gsap.context(() => {
+      mm.add(LIVE, () => {
+        if (!motion) return
+        hero.classList.add('is-live')
+        const bg = hero.querySelector<HTMLElement>('#heroBg')!, stage = hero.querySelector<HTMLElement>('.hero__stage')!
+        const stamps = gsap.utils.toArray<HTMLElement>(hero.querySelectorAll('#stamps .stamp'))
+        const aw = () => Math.min(1240, innerWidth - 32) + 'px'
+        bg.style.setProperty('--aw', aw())
+        const tl = gsap.timeline({ scrollTrigger: { trigger: hero.querySelector('#heroPin'), start: 'top top', end: () => '+=' + innerHeight * 1.7, pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true, onUpdate: st => bg.classList.toggle('is-full', st.progress > .56) } })
+        tl.fromTo(bg, { '--ay': '60svh', '--aw': aw, '--ah': '46svh', '--ar': '999px 999px 0px 0px' }, { '--ay': '0svh', '--aw': () => stage.clientWidth + 'px', '--ah': '100svh', '--ar': '0px 0px 0px 0px', ease: 'power2.inOut', duration: .55, immediateRender: true }, 0)
+          .to('#heroBg img', { scale: 1.12, ease: 'none', duration: 1 }, 0)
+          .fromTo('#heroDim', { opacity: 0 }, { opacity: .58, ease: 'none', duration: 1 }, 0)   // darkens without repainting the photo
+          .to('#heroCopy', { autoAlpha: 0, y: -30, ease: 'power2.in', duration: .25 }, 0)
+          .to('#heroVeil', { opacity: 0, duration: .3 }, .1)
+          .to('#heroFade', { opacity: 1, duration: .35, ease: 'power1.in' }, .3)
+        stamps.forEach((s, i) => tl.to(s, { opacity: 1, y: 0, ease: 'power3.out', duration: .16 }, .42 + i * .16))
+        tl.to('.stamps__line', { opacity: 1, duration: .15 }, .9)
+        return () => hero.classList.remove('is-live')
+      })
+      // PHONES: the same story on a sticky stage (mobile.css): the doorway under the copy rises and opens
+      // to the whole screen, the photo darkens, then the three words of the crest are stamped in
+      mm.add(SCENE, () => {
+        if (!motion) { gsap.set('#stamps', { display: 'none' }); return }
+        const bg = hero.querySelector<HTMLElement>('#heroBg')!, stage = hero.querySelector<HTMLElement>('.hero__stage')!, copy = hero.querySelector<HTMLElement>('#heroCopy')!
+        const stamps = gsap.utils.toArray<HTMLElement>(hero.querySelectorAll('#stamps .stamp'))
+        // the doorway's place in the stacked layout (right under the copy), from layout values, never from its own inline size
+        const w0 = () => stage.clientWidth - 2 * parseFloat(getComputedStyle(copy).paddingLeft)
+        const tl = gsap.timeline({ scrollTrigger: { trigger: hero.querySelector('#heroPin'), start: 'top top', end: 'bottom bottom', scrub: .5, invalidateOnRefresh: true } })
+        tl.fromTo(bg, { y: 0, width: w0, height: () => w0() * .75, borderRadius: () => `${w0() / 2}px ${w0() / 2}px 0px 0px` },
+          { y: () => -(copy.offsetTop + copy.offsetHeight), width: () => stage.clientWidth, height: () => stage.clientHeight, borderRadius: '0px 0px 0px 0px', ease: 'power2.inOut', duration: .5, immediateRender: true }, 0)
+          .fromTo(copy, { autoAlpha: 1, y: 0 }, { autoAlpha: 0, y: -40, ease: 'power2.in', duration: .24 }, 0)
+          .fromTo('#heroBg img', { scale: 1.04, opacity: 1 }, { scale: 1.14, opacity: .5, ease: 'none', duration: 1 }, 0)
+          .to('#heroVeil', { opacity: 0, duration: .3 }, .1)
+          .to('#heroFade', { opacity: 1, duration: .3, ease: 'power1.in' }, .3)
+        stamps.forEach((s, i) => tl.fromTo(s, { opacity: 0, y: 24 }, { opacity: 1, y: 0, ease: 'power3.out', duration: .12 }, .5 + i * .12))
+        tl.fromTo('.stamps__line', { opacity: 0 }, { opacity: 1, duration: .1 }, .86)
+      })
+      // phones on their side and wide-but-short windows: the still hero, as before
+      mm.add(`(max-width:1023px) and (max-height:539px), ${SHORT}`, () => { gsap.set('#stamps', { display: 'none' }) })
+    }, hero)
+    return () => { mm.revert(); ctx.revert() }
+  }, [])
+  return (
+    <header className="hero" id="top" ref={ref}>
+      <div className="hero__pin" id="heroPin">
+        <div className="hero__stage">
+          <div className="shell hero__copy" id="heroCopy">
+            <h1 className="t t-1 hero__h1 d" id="h1"><Lines lines={c.h1} /></h1>
+            <p className="hero__sub rv" data-delay="2">{c.sub}</p>
+            <div className="hero__cta rv" data-delay="3">
+              <a className="cta cta--pulse" href="#book" data-book>{c.cta}<Go /></a>
+            </div>
+            <ul className="micro rv" data-delay="4">{c.micro.map(m => <li key={m}>{m}</li>)}</ul>
+          </div>
+          <div className="hero__bg" id="heroBg"><Img name="hero" alt={c.imgAlt} fetchPriority="high" sizes="(max-width:1023px) calc(100vw - 32px), 100vw" /><div className="hero__dim" id="heroDim"></div><div className="hero__veil" id="heroVeil"></div><div className="hero__fade" id="heroFade"></div></div>
+          <div className="stamps" id="stamps" aria-hidden="true">
+            <div className="stamps__box">
+              <div className="stamp">{c.stamps[0]}</div>
+              <div className="stamp i">{c.stamps[1]}</div>
+              <div className="stamp">{c.stamps[2]}</div>
+              <div className="stamps__line">{c.stampsLine}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  )
+}

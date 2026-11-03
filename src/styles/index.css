@@ -1,0 +1,19 @@
+/* The prototype's CSS, in its order (site-prototipo/_src/css, byte for byte except the two font names). */
+@import '@fontsource-variable/manrope/wght.css';
+@import './prototype/01-tokens-type.css';
+@import './prototype/02-buttons.css';
+@import './prototype/03-micro-call.css';
+@import './prototype/04-nav.css';
+@import './prototype/05-home-sections.css';
+@import './prototype/06-schedule-board.css';
+@import './prototype/07-mobile-bar.css';
+@import './prototype/08-modal.css';
+@import './prototype/09-site-pages.css';
+@import './additions.css';
+/* mobile motion scenes (03/11): the last @import, still before the @font-face below */
+@import './mobile.css';
+
+/* @font-face after every @import: an @import that follows any other rule is dropped. */
+/* Fraunces italic: the fontsource file, instanced at the only weight the CSS uses (400) and the default WONK,
+   with opsz and SOFT still variable; latin only (69 KB instead of 147). scripts in memory/design-decisions.md. */
+@font-face{font-family:'Fraunces Variable';font-style:italic;font-display:swap;font-weight:400;src:url(/fonts/fraunces-italic-latin.woff2) format('woff2-variations');unicode-range:U+0020-007E,U+00A0-00FF,U+2013-2014,U+2018-201F,U+2022,U+2026,U+2032-2033,U+00D7,U+2190-2193}

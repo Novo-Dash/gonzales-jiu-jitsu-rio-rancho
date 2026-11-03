@@ -1,0 +1,72 @@
+<body class="page page--schedule">
+{{DEFS}}
+
+{{NAV}}
+
+<header class="phero" id="top" aria-labelledby="sp-t">
+  <div class="phero__stage">
+    <div class="shell phero__copy">
+      <nav class="crumbs rv" aria-label="Breadcrumb"><a href="index.html">Home</a><svg class="ic"><use href="#i-arrow"/></svg><span aria-current="page">Schedule</span></nav>
+      <h1 class="t t-1 d" id="sp-t"><span class="ln"><span>The week,</span></span><span class="ln"><span><em>class by class.</em></span></span></h1>
+      <p class="phero__lead rv" data-delay="1">Seventeen classes, Monday to Saturday, after school and after work. Every class on the board books in two minutes.</p>
+      <div class="phero__cta rv" data-delay="2">
+        <a class="cta" href="#schedule">See the board<span class="cta__go"><svg class="ic"><use href="#i-down"/></svg><svg class="ic"><use href="#i-down"/></svg></span></a>
+        <a class="call" href="tel:+15054148083"><svg class="ic"><use href="#i-phone"/></svg><u>505-414-8083</u></a>
+      </div>
+      <ul class="micro rv" data-delay="3"><li>17 classes a week</li><li>Gi &amp; No-Gi</li><li>Sunday closed</li></ul>
+    </div>
+    <div class="phero__arch" data-arch><img src="img/women.webp" alt="Students drilling on the mat" width="1400" height="1681" style="object-position:50% 52%"></div>
+  </div>
+</header>
+
+<!-- ═══════════ ACT III · SCHEDULE ═══════════ -->
+<section class="sched sec screen" id="schedule" aria-labelledby="sc-t" style="background:#fff">
+  <div class="shell">
+    <div class="head">
+      <div>
+        <p class="act rv"><b>01</b>The board · Mountain Time</p>
+        <h2 class="t t-2 d" id="sc-t"><span class="ln"><span>Tap a class <em>to book it.</em></span></span></h2>
+      </div>
+      <div class="sched__filters rv" data-delay="1" id="filters">
+        <button class="fbtn on" data-f="all">All classes</button><button class="fbtn" data-f="t">Toddlers</button><button class="fbtn" data-f="k">Kids</button><button class="fbtn" data-f="a">Adults</button>
+      </div>
+    </div>
+    <div class="board rv" id="board"></div>
+    <div class="sched__tabs" id="stabs"></div>
+    <ul class="sched__m" id="smob"></ul>
+    <div class="sched__foot rv"><span>Mountain Time · 17 classes a week · Sunday closed</span><span>Every class is a button: tap one to book it.</span></div>
+  </div>
+</section>
+
+<!-- ═══════════ TODAY: the clock on the wall by the door; the next class, and the day as a line ═══════════ -->
+<section class="todaysec sec screen" id="today" aria-labelledby="td-t">
+  <div class="shell today__grid">
+    <article class="clock rv" id="clock" aria-live="polite">
+      <div class="clock__top"><p class="clock__k">Today in Rio Rancho</p><p class="clock__now" id="tNow">—</p></div>
+      <div class="clock__next">
+        <small id="tWhen">Next on the mat</small>
+        <b id="tTime">—</b>
+        <span id="tName">—</span>
+        <em id="tIn"></em>
+      </div>
+      <div class="clock__line" id="tLine"><i class="clock__rail"></i></div>
+      <div class="clock__cta"><button class="cta cta--sm" type="button" id="tBook" data-book>Book this class<span class="cta__go"><svg class="ic"><use href="#i-arrow"/></svg><svg class="ic"><use href="#i-arrow"/></svg></span></button></div>
+    </article>
+    <div class="know">
+      <p class="act rv"><b>02</b>Before you come</p>
+      <h2 class="t t-2 d" id="td-t"><span class="ln"><span>Good</span></span><span class="ln"><span><em>to know.</em></span></span></h2>
+      <ul class="know__list">
+        <li class="rv"><span class="know__ic"><svg class="ic"><use href="#i-check"/></svg></span><p><b>First night?</b> Adult Fundamentals, Monday and Wednesday at 6:00 PM. No experience needed.</p></li>
+        <li class="rv" data-delay="1"><span class="know__ic"><svg class="ic"><use href="#i-clock"/></svg></span><p><b>Toddlers</b> is thirty minutes, Monday to Wednesday at 4:30 PM.</p></li>
+        <li class="rv" data-delay="2"><span class="know__ic"><svg class="ic"><use href="#i-arrow"/></svg></span><p><b>Competing?</b> Kids Comp is Friday at 5:00 PM. Adult Advanced is Thursday at 6:00 PM.</p></li>
+        <li class="rv" data-delay="3"><span class="know__ic"><svg class="ic"><use href="#i-plus"/></svg></span><p><b>What to bring:</b> shorts and a t-shirt for your free class. We take it from there.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{{FOOTER}}
+
+<div class="bar"><a class="bar__tel" href="tel:+15054148083" aria-label="Call"><svg class="ic"><use href="#i-phone"/></svg></a><a class="bar__cta" href="contact.html" data-book>Book your free class</a></div>
+
+{{MODAL}}

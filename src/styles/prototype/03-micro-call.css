@@ -1,0 +1,5 @@
+.micro{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0;padding:0;list-style:none;font-size:13.5px;color:var(--muted)}
+.micro li{display:flex;align-items:center;gap:8px}.micro li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ink)}
+.dark .micro{color:var(--muted-d)}.dark .micro li::before{background:#fff}
+.call{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-weight:600;font-size:15px;text-decoration:none}
+.call svg{width:18px;height:18px}.call u{text-decoration-thickness:1px;text-underline-offset:4px}

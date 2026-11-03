@@ -1,0 +1,6 @@
+/* mobile bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:70;display:grid;grid-template-columns:56px 1fr;gap:10px;padding:10px var(--gr) calc(10px + env(safe-area-inset-bottom,0px)) var(--gl);background:rgba(255,255,255,.92);backdrop-filter:blur(12px);box-shadow:0 -1px 0 var(--line)}
+.bar a{display:inline-flex;align-items:center;justify-content:center;height:52px;border-radius:var(--rp);text-decoration:none;font:700 14px/1 var(--f-s)}
+.bar .bar__tel{background:var(--ink);color:#fff}.bar .bar__tel svg{width:20px;height:20px}
+.bar .bar__cta{background:var(--red);color:#fff}
+@media (min-width:760px){.bar{display:none}}

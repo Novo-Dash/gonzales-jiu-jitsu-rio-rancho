@@ -1,0 +1,326 @@
+/* ─── Additions to the prototype's CSS (01–09 stay byte for byte). Invisible with JS on. ─── */
+
+/* Without JS nothing stays hidden (PRD 0.12-B.2): the states the scripts animate from come back. */
+html:not(.js) .rv,html:not(.js) .d .ln>span{opacity:1;transform:none}
+html:not(.js) .pass{opacity:1}
+html:not(.js) .tape{clip-path:none}
+html:not(.js) .orbit__seat img{transform:scale(1);opacity:1}
+html:not(.js) .orbit__ring{opacity:1}
+html:not(.js) .stamps{display:none}
+
+/* Skip link: off-screen until focused; its text stays out of innerText until then. */
+.skip{position:fixed;left:16px;top:-80px;z-index:200;padding:14px 20px;border-radius:999px;background:var(--ink);color:#fff;font:700 14px/1 var(--f-s);text-decoration:none}
+.skip span{visibility:hidden}
+.skip:focus{top:16px}.skip:focus span{visibility:visible}
+
+/* Glass without backdrop-filter: an opaque fill of the same tone (PRD 13). */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .pnav__bar{background:#fff}
+  .foot__card{background:rgba(22,22,21,.94)}
+  .scard{background:rgba(24,24,23,.94)}
+  .modal{background:rgba(17,17,16,.88)}
+  .bar{background:#fff}
+}
+
+/* ─── Design changes asked after the prototype was approved (memory/design-decisions.md) ─── */
+
+/* /schedule · Today + Good to know: white, like the board above it (03/11) */
+.todaysec{background:#fff}
+
+/* /contact · Visit: white; head, contacts and hours stacked beside a map as tall as they are; on phones
+   the title comes before the map; the hours in a black card, today in white (03/11) */
+.visit{background:#fff}
+.visit__grid{grid-template-areas:"head" "map" "reach" "hours";align-items:start;row-gap:clamp(20px,5vw,28px)}
+.vinfo{grid-area:head}.vmap{grid-area:map}
+.visit__grid .reach{grid-area:reach;margin:0}
+.visit__grid .vhours{grid-area:hours;margin:0}
+.vinfo .vaddr{margin-top:clamp(12px,2svh,18px)}
+@media (max-width:1023px){.vmap{height:clamp(260px,46svh,380px)}}
+@media (min-width:1024px){
+  .visit__grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);grid-template-areas:"map head" "map reach" "map hours";grid-template-rows:auto auto 1fr;column-gap:clamp(40px,5vw,88px);row-gap:clamp(18px,2.6svh,26px);align-items:stretch}
+  .vmap{height:auto;min-height:clamp(440px,68svh,620px)}
+}
+/* the new embed puts a place card in the top corner: crop it off like the old top bar */
+.vmap iframe{inset:-140px 0;height:calc(100% + 280px)}
+.vhours{align-self:start;padding:clamp(16px,1.8vw,22px) clamp(18px,2vw,24px) clamp(8px,1vw,12px);border-radius:var(--rc);background:var(--red);color:#fff;box-shadow:0 30px 60px -32px rgba(215,34,44,.6)}
+.vhours__k{margin-bottom:4px}
+.vhours dl{grid-template-columns:auto 1fr;gap:0}
+.vhours dt,.vhours dd{padding:9px 0;border-top:1px solid rgba(255,255,255,.22)}
+.vhours dt:first-of-type,.vhours dd:first-of-type{border-top:0}
+.vhours dd{text-align:right}
+.vhours .vhours__k{color:rgba(255,255,255,.78)}
+.vhours dd{color:rgba(255,255,255,.82)}
+.vhours dt.today,.vhours dd.today{font-weight:700;color:#fff}
+.vhours dt.today::after{content:"Today";margin-left:8px;padding:3px 7px;border-radius:var(--rp);background:#fff;color:var(--red);font:700 9.5px/1 var(--f-s);letter-spacing:.14em;text-transform:uppercase;vertical-align:2px}
+
+/* Home · zoom: no compositor layer per photo, so each is drawn sharp at the scale it reaches (03/11) */
+.zoom__item{will-change:auto}
+.zoom__stick.is-moving .zoom__item{will-change:transform}
+
+/* Home · Served: a top fade fixed to the section (the flag drifts under it), from the colour the gate above
+   ends on: ink where the gates animate, white where they stay still (phones) (03/11) */
+.serve::before{content:"";position:absolute;left:0;right:0;top:0;z-index:1;height:clamp(56px,9vw,72px);background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.6) 35%,rgba(255,255,255,0) 100%);pointer-events:none}
+@media (min-width:1024px) and (min-height:620px) and (prefers-reduced-motion:no-preference){.serve::before{height:clamp(160px,30svh,300px);background:linear-gradient(180deg,var(--ink) 0%,rgba(17,17,16,.85) 30%,rgba(17,17,16,0) 100%)}}
+
+/* Home · Served (03/11): room above and below again (the desktop .screen rule squeezed it to 36–64px), and two
+   cards side by side, each a full photograph with the copy on a dark gradient at its foot. */
+.serve.sec,.serve.sec.screen{padding-block:clamp(88px,12svh,140px)}
+.serve__grid{gap:clamp(14px,1.6vw,22px)}
+@media (min-width:900px){.serve__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.scard{display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(420px,58svh,560px);background:var(--ink);clip-path:inset(0 round var(--rc))}
+.scard__photo{position:absolute;inset:0;z-index:0;overflow:hidden}
+.scard__photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(0) contrast(1.08) brightness(.82)}
+.scard__photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,16,.45) 0%,rgba(17,17,16,.1) 26%,rgba(17,17,16,.35) 50%,rgba(17,17,16,.9) 76%,rgba(17,17,16,.96) 100%)}
+.scard .scard__body,.scard--fire .scard__body,.scard--boots .scard__body{position:relative;inset:auto;top:auto;bottom:auto;max-width:none;padding:clamp(24px,2.6vw,40px)}
+.scard p{max-width:46ch}
+.scard--boots .insig,.scard--fire .insig{position:absolute;left:clamp(20px,2.4vw,36px);right:auto;top:clamp(20px,2.4vw,36px);margin:0;width:clamp(64px,5.4vw,90px)}
+@media (max-width:899px){.scard{min-height:clamp(440px,118vw,560px)}}
+
+/* About · II · The founders: white (03/11). The cards turn to paper, the type to ink; the name tape stays
+   the dark sewn tape it is. A link to /instructors closes the section. */
+.founders{background:#fff}
+.fcard{background:var(--paper);box-shadow:inset 0 0 0 1px var(--line)}
+.fcard__photo{background:var(--ink)}
+.fcard h3{color:var(--ink)}
+.fcard__role{color:var(--muted)}
+.fcard__facts li{border-top-color:var(--line);color:var(--ink-2)}
+.fcard__facts li::before{background:var(--ink)}
+.fcard__q{color:var(--ink)}
+.fcard__q cite{color:var(--muted)}
+.fcard__q a{border-bottom-color:var(--line-2)}
+.founders__foot{color:var(--muted)}
+.founders__foot b{color:var(--ink)}
+.founders__more{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:1px;white-space:nowrap}
+
+/* /instructors · The staff (03/11): the Fight Sports /site2/instructors grid in this site's language. Ink,
+   two coaches to a row, the portrait beside the name, mirrored column to column, the copy centred on the
+   portrait; the portrait fades into the ink on every edge. One column, centred, on phones. */
+.insts{position:relative;background:var(--ink);color:#fff}
+.insts::before{content:"";position:absolute;left:0;right:0;top:0;height:clamp(120px,14svh,200px);background:linear-gradient(180deg,var(--ink),rgba(17,17,16,0));pointer-events:none}
+.insts>.shell{position:relative;z-index:1}
+.insts .act{color:var(--muted-d)}.insts .act b{color:#fff}
+.insts__grid{list-style:none;margin:clamp(12px,2svh,24px) 0 0;padding:0;display:grid;gap:clamp(48px,6vw,88px) clamp(32px,4vw,72px)}
+@media (min-width:1024px){.insts__grid{grid-template-columns:1fr 1fr}}
+.inst{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);gap:clamp(18px,2.4vw,36px);align-items:center}
+@media (min-width:1024px){.inst:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,.85fr)}.inst:nth-child(even) .inst__photo{order:2}}
+.inst__photo{position:relative;aspect-ratio:4/5}
+.inst__photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(0) contrast(1.06);-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 74%,transparent 100%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 74%,transparent 100%),linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
+.inst h3{margin:0;font:700 clamp(30px,2.6vw,44px)/1 var(--f-s);letter-spacing:-.035em;text-wrap:balance}
+.inst__role{display:block;margin-top:12px;font:600 11px/1.35 var(--f-s);letter-spacing:.2em;text-transform:uppercase;color:var(--muted-d)}
+.inst__body p{margin:16px 0 0;font-size:15px;line-height:1.6;color:rgba(255,255,255,.72);text-wrap:pretty;max-width:46ch}
+@media (max-width:1023px){
+  .insts__grid{gap:56px}
+  .inst{grid-template-columns:1fr;justify-items:center;text-align:center;gap:14px}
+  .inst__photo,.inst:nth-child(even) .inst__photo{width:min(76vw,340px);margin-inline:auto;order:0}
+  .inst__body p{margin-inline:auto;max-width:42ch}
+}
+/* the staff title, centred and larger (03/11) */
+.insts__t{font-size:clamp(46px,6.2vw,104px)}
+.insts .head{margin-bottom:clamp(36px,6svh,72px)}
+
+/* ─── Inner pages · PAGE HERO (03/11): the Fight Sports /site2 opening in black and white. A rounded ink card
+   inside the paper, the photo behind a long gradient, the copy on its dark side. --open (0 → 1, GSAP on
+   scroll) opens the card to the edges: its inset and radius are a clip-path, so nothing reflows. ─── */
+.pghero{--it:84px;--ix:10px;--r:22px;position:relative;background:var(--paper);padding-top:var(--it)}
+@media (min-width:768px){.pghero{--it:92px;--ix:24px;--r:32px}}
+.pghero__card{--open:0;position:relative;display:flex;min-height:min(80svh,720px);color:#fff;isolation:isolate;clip-path:inset(0 calc(var(--ix) * (1 - var(--open))) 0 calc(var(--ix) * (1 - var(--open))) round calc(var(--r) * (1 - var(--open))))}
+@media (min-width:1024px){.pghero__card{align-items:center;min-height:min(78svh,760px)}}
+@media (min-width:1024px) and (min-height:620px){.pghero__card{min-height:calc(100svh - var(--it) - 24px)}}
+.pghero__bg{position:absolute;inset:0;z-index:0;background:var(--ink);overflow:hidden}
+.pghero__bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(0) contrast(1.06);transform:scale(1.06);animation:pgheroin 1.8s var(--ease) backwards}
+@keyframes pgheroin{from{transform:scale(1.14)}to{transform:scale(1.06)}}
+.pghero__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,17,16,.94) 0%,rgba(17,17,16,.9) 18%,rgba(17,17,16,.8) 30%,rgba(17,17,16,.64) 42%,rgba(17,17,16,.46) 53%,rgba(17,17,16,.28) 64%,rgba(17,17,16,.14) 76%,rgba(17,17,16,.05) 88%,rgba(17,17,16,0) 100%),linear-gradient(0deg,rgba(17,17,16,.55),rgba(17,17,16,0) 40%)}
+@media (max-width:1023px){.pghero__card{align-items:flex-end}.pghero__bg::after{background:linear-gradient(180deg,rgba(17,17,16,.2) 0%,rgba(17,17,16,.32) 22%,rgba(17,17,16,.6) 42%,rgba(17,17,16,.84) 60%,rgba(17,17,16,.94) 78%,rgba(17,17,16,.97) 100%)}}
+.pghero__copy{position:relative;z-index:2;padding-block:clamp(40px,7svh,88px) clamp(44px,9svh,112px)}
+@media (max-width:767px){.pghero__copy{padding-left:calc(var(--gl) + var(--ix));padding-right:calc(var(--gr) + var(--ix))}}
+.pghero__in{width:min(100%,820px)}
+@media (min-width:1024px){.pghero__in{width:min(54%,860px)}}
+.pghero__crumbs{display:flex;width:fit-content;max-width:100%;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:clamp(18px,2.6svh,28px);padding:9px 16px 8px;border-radius:var(--rp);background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font:600 11px/1 var(--f-s);letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.pghero__crumbs a{color:inherit;text-decoration:none;transition:color .25s}.pghero__crumbs a:hover{color:#fff}
+.pghero__crumbs svg{width:11px;height:11px;color:rgba(255,255,255,.4)}
+.pghero__crumbs [aria-current]{color:#fff}
+.pghero__kick{display:flex;align-items:center;gap:12px;margin:0 0 clamp(12px,1.8svh,18px);font:600 11.5px/1 var(--f-s);letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.pghero__kick::before{content:"";width:28px;height:1.5px;background:#fff}
+.pghero__h1{color:#fff;font-size:clamp(44px,11vw,60px)}
+@media (min-width:1024px){.pghero__h1{font-size:min(clamp(52px,4.8vw,92px),10svh)}.pghero__h1 .ln{white-space:nowrap}}
+.pghero__lead{margin:clamp(16px,2.2svh,24px) 0 0;max-width:46ch;font-size:clamp(16px,1.15vw,19px);line-height:1.6;color:rgba(255,255,255,.8);text-wrap:pretty}
+.pghero__cta{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;margin-top:clamp(22px,3.2svh,34px)}
+.pghero__cta .call{color:#fff}
+.pghero__facts{list-style:none;display:flex;flex-wrap:wrap;gap:6px 0;margin:clamp(18px,2.6svh,28px) 0 0;padding:0;font:600 10.5px/1.4 var(--f-s);letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.pghero__facts li{display:flex;align-items:center}
+.pghero__facts li+li::before{content:"";width:4px;height:4px;margin:0 14px;border-radius:50%;background:rgba(255,255,255,.55)}
+@media (prefers-reduced-motion:reduce){.pghero__bg img{animation:none}}
+
+/* /schedule · Today: the clock card in red (03/11, Adryan). On red the button turns white with a red arrow,
+   the "now" marker white; the day's line gets room for labels above and below it, so close starts never
+   print over each other (Today.tsx puts the crowded ones above). */
+.clock{background:var(--red);box-shadow:0 40px 80px -40px rgba(215,34,44,.6)}
+.clock__k,.clock__next small{color:rgba(255,255,255,.78)}
+.clock__next em{background:rgba(255,255,255,.18)}
+.clock__line{height:96px;margin-top:0}
+.clock__rail,.clock__dot{top:50px}
+.clock__rail{background:rgba(255,255,255,.4)}
+.clock__dot{background:var(--red);box-shadow:inset 0 0 0 2px rgba(255,255,255,.75)}
+.clock__dot.past{background:rgba(255,255,255,.35)}
+.clock__dot.next{box-shadow:0 0 0 6px rgba(255,255,255,.22)}
+.clock__dot span{color:rgba(255,255,255,.82)}
+.clock__dot.up span{top:auto;bottom:18px}
+.clock__nowm{top:20px;bottom:38px;background:#fff}
+.clock__nowm::before{top:-16px}
+.clock .cta{background:#fff;color:var(--red);box-shadow:0 16px 30px -16px rgba(0,0,0,.45)}
+.clock .cta:hover{background:#fff}
+.clock .cta__go{background:var(--red);color:#fff}
+.know .t{white-space:nowrap}
+
+/* /programs · the mini week, redrawn (03/11): a tray of six day tiles. Class days are white tiles with the
+   start in large tabular figures and the class under it, a button that fills red on hover (it books);
+   rest days recede into the tray; today is the ink tile. Three by two on phones. */
+.mweek{gap:6px;padding:6px;border-radius:20px;background:var(--paper-2);box-shadow:none;overflow:visible;max-width:600px}
+.mweek__d,.mweek__d:first-child{display:flex;flex-direction:column;gap:8px;min-height:112px;padding:12px 10px;border:0;border-radius:14px;background:#fff;box-shadow:0 1px 0 rgba(17,17,16,.04),0 10px 24px -18px rgba(17,17,16,.35)}
+.mweek__d>b{display:flex;align-items:center;justify-content:space-between;font:700 10.5px/1 var(--f-s);letter-spacing:.2em;color:var(--ink)}
+.mweek__d:not(:has(.mweek__s)){background:transparent;box-shadow:inset 0 0 0 1px var(--line-2)}
+.mweek__d:not(:has(.mweek__s))>b{color:var(--muted)}
+.mweek__none{margin:auto 0;align-self:center;font:italic 400 15px/1 var(--f-i);color:var(--muted);opacity:.6}
+.mweek__s{display:block;width:100%;margin-top:auto;padding:10px 7px 9px;border-radius:10px;background:var(--paper);color:var(--ink);text-align:left;box-shadow:inset 0 0 0 1px var(--line);transition:transform .35s var(--ease),background .25s,color .25s,box-shadow .25s}
+.mweek__s+.mweek__s{margin-top:0}
+.mweek__s span{font:700 clamp(16px,1.25vw,19px)/1 var(--f-s);letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mweek__s span i{font-style:normal;font-size:.56em;font-weight:700;letter-spacing:.06em}
+.mweek__s small{margin-top:5px;font:600 10.5px/1.2 var(--f-s);letter-spacing:-.01em;color:var(--muted);overflow-wrap:anywhere}
+.mweek__s:hover{transform:translateY(-2px);background:var(--red);color:#fff;box-shadow:0 14px 26px -14px rgba(215,34,44,.7)}
+.mweek__s:hover small{color:rgba(255,255,255,.8)}
+.mweek__d.today{background:var(--ink);color:#fff;box-shadow:0 18px 34px -20px rgba(17,17,16,.7)}
+.mweek__d.today>b{color:#fff}
+.mweek__d.today>b::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 0 3px rgba(215,34,44,.3)}
+.mweek__d.today .mweek__s{background:rgba(255,255,255,.1);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.mweek__d.today .mweek__s small{color:rgba(255,255,255,.65)}
+.mweek__d.today .mweek__s:hover{background:var(--red)}
+@media (max-width:520px){.mweek{grid-template-columns:repeat(3,minmax(0,1fr))}.mweek__d,.mweek__d:first-child,.mweek__d:nth-child(n+4){border:0;min-height:100px}}
+
+/* About · II · The founders as the BJJ Boston coach section (03/11): the photo beside the copy, Laura mirrored
+   on desktop, photo first on phones. Name tape → role → name → black belt bar (Abie) → caption → bio → three
+   figures → booking. Figures in Fraunces italic, like the site's other numbers. */
+.fd{display:grid;gap:clamp(28px,4vw,44px);align-items:stretch;margin-top:clamp(28px,4svh,48px)}
+.fd+.fd{margin-top:clamp(72px,9vw,128px)}
+@media (min-width:980px){.fd{grid-template-columns:.9fr 1.1fr;gap:clamp(48px,5vw,72px)}.fd--rev{grid-template-columns:1.1fr .9fr}.fd--rev .fd__photo{order:2}.fd--rev .fd__body{order:1}}
+.fd__photo{position:relative;margin:0;border-radius:28px;overflow:hidden;background:var(--ink);min-height:clamp(420px,62svh,600px);box-shadow:var(--sh-2)}
+.fd__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(0) contrast(1.06)}
+.fd__photo a{position:absolute;inset:0}
+.fd__body{display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.fd__body .tape{margin-bottom:18px}
+.fd__role{margin:0 0 10px;font:600 11.5px/1 var(--f-s);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.fd__name{margin:0}
+.fd__belt{position:relative;align-self:stretch;height:56px;margin:clamp(22px,3svh,32px) 0 12px;border-radius:5px;background:linear-gradient(180deg,#232326,#0a0a0b 60%,#151517);box-shadow:inset 0 0 0 1px #3a3a40,0 18px 40px -20px rgba(0,0,0,.9);overflow:hidden}
+.fd__belt::before,.fd__belt::after{content:"";position:absolute;left:0;right:0;border-top:1.5px dashed rgba(255,255,255,.14)}
+.fd__belt::before{top:24%}.fd__belt::after{bottom:24%}
+.fd__bar{position:absolute;right:12%;top:0;bottom:0;width:22%;background:linear-gradient(180deg,#c21a25,#8f0f18);transform:scaleX(0);transform-origin:100% 50%;transition:transform 1s var(--ease) .2s}
+.fd__belt.on .fd__bar{transform:none}
+html:not(.js) .fd__bar{transform:none}
+.fd__rule{align-self:stretch;height:1px;margin:clamp(22px,3svh,32px) 0 12px;background:var(--line-2)}
+.fd__cap{align-self:stretch;display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:space-between;margin:0;font:600 11px/1.3 var(--f-s);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.fd__bio{margin:clamp(20px,3svh,28px) 0 0;max-width:54ch;font-size:clamp(16px,1.15vw,18px);line-height:1.62;color:var(--muted);text-wrap:pretty}
+.fd__q{margin:16px 0 0;font:italic 400 clamp(18px,1.4vw,21px)/1.35 var(--f-i);color:var(--ink);text-wrap:balance}
+.fd__q cite{display:block;margin-top:8px;font:600 10.5px/1 var(--f-s);font-style:normal;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.fd__q a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line-2);padding-bottom:2px}
+.fd__stats{align-self:stretch;display:flex;margin:clamp(22px,3.4svh,34px) 0 clamp(22px,3.4svh,34px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fd__stats div{flex:1;padding:18px 14px 16px 0}
+.fd__stats div+div{padding-left:18px;border-left:1px solid var(--line)}
+.fd__stats b{display:block;font:italic 400 clamp(40px,4vw,64px)/.9 var(--f-i);letter-spacing:-.02em;font-variation-settings:"opsz" 144,"SOFT" 40}
+.fd__stats span{display:block;margin-top:10px;font:600 10.5px/1.3 var(--f-s);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.fd__acts{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center}
+@media (max-width:979px){.fd__photo{min-height:0;aspect-ratio:4/5}}
+@media (max-width:520px){.fd__stats b{font-size:34px}.fd__stats div+div{padding-left:12px}.fd__stats div{padding-right:8px}}
+.founders .founders__foot{margin-top:clamp(48px,7vw,96px)}
+
+/* Home · hero on desktop: the doorway is wide and low before it opens, so the photo is framed lower,
+   on the people, the whole group in view (03/11). The open, full-screen state shows them too. */
+@media (min-width:1024px){.hero__bg img{object-position:50% 60%}}
+
+/* Home · Programs cards (03/11): the arrow is the red booking button, on the name's line; the text and the
+   chips run the card's full width under it, so a third chip no longer squeezes against the button. */
+.wdoor__in{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:14px;row-gap:10px}
+.wdoor__text{display:contents}
+.wdoor__name{grid-column:1;grid-row:1}
+.wdoor__go{grid-column:2;grid-row:1;width:52px;height:52px;background:var(--red);color:#fff;box-shadow:0 14px 26px -14px rgba(215,34,44,.9)}
+.wdoor__go svg{width:18px;height:18px}
+.wdoor:hover .wdoor__go{background:var(--red-hi)}
+.wdoor__txt,.wdoor__meta{grid-column:1/-1}
+
+/* Home · ACT III · The mat (03/11): white and light, the photos dealt like a hand of cards (Gallery.tsx sets
+   each card's place). The deck fades out at both sides. */
+.gal{background:#fff;overflow:hidden;padding-block:clamp(56px,7svh,96px)}
+.gal .head{margin-bottom:clamp(14px,2.4svh,28px)}
+.deck{--cw:clamp(220px,min(22vw,40svh),340px);position:relative;height:calc(var(--cw) * 1.25 + 60px);margin-top:clamp(4px,1svh,12px);outline:0;cursor:grab;touch-action:pan-y;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 9%,#000 91%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 9%,#000 91%,transparent 100%)}
+.deck:active{cursor:grabbing}
+.deck__card{position:absolute;left:50%;top:10px;width:var(--cw);aspect-ratio:4/5;margin:0 0 0 calc(var(--cw) / -2);border-radius:18px;overflow:hidden;background:var(--paper-2);box-shadow:0 30px 60px -28px rgba(17,17,16,.45),0 0 0 1px rgba(17,17,16,.06);transform-origin:50% 100%;cursor:pointer;user-select:none}
+.deck__card.is-on{cursor:default;box-shadow:0 40px 80px -30px rgba(17,17,16,.55),0 0 0 1px rgba(17,17,16,.08)}
+.deck__card img{width:100%;height:100%;object-fit:cover;filter:grayscale(0) contrast(1.05);pointer-events:none}
+.gal__ctrl{display:flex;justify-content:center;gap:10px;margin-top:-8px;position:relative;z-index:30}
+@media (max-width:767px){.deck{--cw:64vw;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 10%,#000 90%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 10%,#000 90%,transparent 100%)}}
+
+/* Home · ACT II · On the mat (03/11): the Go Rin coach section, for Abie. White; a tilted ink strip of the
+   academy's photos on a loop; head in three columns (title, the free middle where Abie stands, the bio);
+   the stage: his name in giant type behind him, rings either side. abie-cut is provisional (a photo, faded
+   at its edges) until the cut-out arrives. */
+.cst{position:relative;background:#fff;color:var(--ink);overflow:hidden;padding-top:clamp(56px,8svh,96px)}
+.cst__strip{position:relative;height:clamp(84px,10vw,160px);margin:0 -4vw clamp(40px,6svh,80px);transform:rotate(-1.4deg);transform-origin:50% 100%;overflow:hidden;background:var(--ink)}
+.cst__track{display:flex;gap:6px;height:100%;width:max-content;animation:cststrip 60s linear infinite}
+.cst__track img{flex:none;width:clamp(150px,14vw,250px);height:100%;object-fit:cover;filter:grayscale(0) contrast(1.08) brightness(.82);opacity:.95}
+@keyframes cststrip{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.cst__track{animation:none}}
+.cst__head{display:grid;gap:clamp(22px,3vw,64px)}
+@media (min-width:1024px){.cst__head{grid-template-columns:minmax(0,1fr) minmax(220px,.62fr) minmax(0,1fr);align-items:start}.cst__head>div:first-child{grid-column:1}.cst__side{grid-column:3;justify-items:end;text-align:right}.cst__side .cst__acts{justify-content:flex-end}}
+.cst__t{font-size:clamp(40px,min(4.6vw,8svh),84px)}
+.cst__rank{margin:16px 0 0;max-width:40ch;font:700 clamp(13px,1vw,15px)/1.45 var(--f-s);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cst__rank b{color:var(--ink)}
+.cst__side{display:grid;gap:clamp(18px,2.6svh,26px);align-content:start;padding-top:clamp(0px,2.4svh,34px)}
+.cst__body{margin:0;max-width:52ch;font-size:clamp(16px,1.1vw,18px);line-height:1.66;color:var(--muted)}
+.cst__acts{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center}
+.cst__stage{position:relative;z-index:3;pointer-events:none;margin-top:clamp(-120px,-8svh,-40px);height:clamp(520px,90svh,960px);display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.cst__giant{position:absolute;left:0;right:0;bottom:-.08em;z-index:0;margin:0;text-align:center;font:800 clamp(80px,12.5vw,250px)/.82 var(--f-s);letter-spacing:-.05em;text-transform:uppercase;white-space:nowrap;color:var(--ink);will-change:transform}
+.cst__giant em{font:italic 400 1em/.82 var(--f-i);letter-spacing:-.03em;text-transform:none;font-variation-settings:"opsz" 144,"SOFT" 40}
+.cst__cut{position:relative;z-index:1;display:block;height:100%;width:auto;max-width:none;object-fit:contain;object-position:50% 100%;filter:grayscale(0) contrast(1.05);will-change:transform,opacity;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 78%,transparent 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 78%,transparent 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 86%,transparent 100%);mask-composite:intersect}
+.cst__ring{position:absolute;top:50%;width:clamp(240px,26vw,520px);aspect-ratio:1;border-radius:50%;box-shadow:inset 0 0 0 1.5px rgba(17,17,16,.08);translate:0 -50%;pointer-events:none}
+.cst__ring--l{left:-6%}.cst__ring--r{right:-6%}
+@media (max-width:1023px){.cst__strip{margin-bottom:clamp(28px,5svh,48px)}.cst__stage{height:clamp(320px,56svh,520px);margin-top:clamp(20px,4svh,40px)}.cst__giant{font-size:15vw;bottom:-.06em}}
+
+/* Home · What they come home with: the drawing tiles in red (03/11, Adryan). The drawings keep their ink
+   lines on the white figures; the mat and the shadow turn to darker reds. */
+.kc__art{background:var(--red)}
+.kc__art .mat{fill:#b51c25}
+.kc__art .shadow{fill:rgba(0,0,0,.18)}
+
+/* Photos in colour, site-wide (03/11, Adryan): the prototype's black and white is lifted. Each prototype rule
+   that set grayscale(1) gets the same filter with grayscale(0); contrast and brightness stay. */
+.hero__bg img{filter:grayscale(0) contrast(1.05) brightness(1)}
+.zoom__item>div img{filter:grayscale(0) contrast(1.06)}
+.wdoor__photo img{filter:grayscale(0) contrast(1.06)}
+.pass__photo img:first-child{filter:grayscale(0) contrast(1.08)}
+.serve__bg img{filter:grayscale(0) contrast(1.15) brightness(.32)}
+.scard__cut img{filter:grayscale(0) contrast(1.05) brightness(.95) drop-shadow(0 30px 40px rgba(0,0,0,.6))}
+.orbit__seat img{filter:grayscale(0) contrast(1.06)}
+.rcard__g svg{filter:grayscale(0)}
+.foot__video{filter:grayscale(0) contrast(1.06) brightness(.8)}
+.phero__arch img{filter:grayscale(0) contrast(1.05)}
+.fcard__photo img{filter:grayscale(0) contrast(1.08)}
+.film__row img{filter:grayscale(0) contrast(1.06) brightness(1.02)}
+.chap__photo img{filter:grayscale(0) contrast(1.06)}
+.vmap__bg{filter:grayscale(0) brightness(.55) blur(1px)}
+.vmap iframe{filter:grayscale(0) contrast(1.05)}
+
+/* Scroll performance (03/11): the hero photos darken through an overlay's opacity, not a filter repainted every
+   frame; no backdrop blur over moving things (the footer card over the video, the Served cards over the
+   photos); the moving photos get their own layers. */
+.hero__dim,.pghero__dim{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
+.pghero__dim{z-index:1}
+.hero__bg img,.pghero__bg img,.serve__bg,.scard__photo img{will-change:transform}
+.foot__card{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(22,22,21,.9)}
+.scard{-webkit-backdrop-filter:none;backdrop-filter:none}
+.foot__video{will-change:transform}
+/* On the mat without the photo strip (03/11) */
+.cst{padding-top:clamp(72px,10svh,128px)}
+.cst__t{font-size:clamp(46px,min(5.4vw,9svh),100px)}
+.cst__rank{margin-top:18px;max-width:34ch}
+.cst__stage{margin-top:clamp(-60px,-4svh,-20px)}
+/* the footer video: no filter recomputed on every video frame; the same darkening from a still layer */
+.foot__video{filter:none}
+.foot__band::before{content:"";position:absolute;inset:0;z-index:1;background:rgba(0,0,0,.2);pointer-events:none}

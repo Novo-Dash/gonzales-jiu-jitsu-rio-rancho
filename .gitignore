@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+# Build / output
+dist/
+dist-ssr/
+dist-server/
+build/
+*.local
+*.tsbuildinfo
+.vercel
+# Env & secrets (NUNCA versionar)
+.env
+.env.*
+!.env.example
+# Claude / ferramentas de IA
+.claude/
+.cursor/
+.aider*
+# Branding: assets BRUTOS de marca
+brand/
+/brand-assets/
+# QA local
+.responsive-check/
+parity/
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+# Cache
+.cache/
+.temp/
+.eslintcache
+coverage/

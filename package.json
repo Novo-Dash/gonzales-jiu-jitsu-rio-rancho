@@ -1,0 +1,36 @@
+{
+  "name": "gonzales-jiu-jitsu",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-server && node scripts/prerender.mjs",
+    "preview": "vite preview",
+    "proto": "npx serve site-prototipo -l 4100",
+    "parity": "node site-prototipo/_tools/parity.mjs --proto http://localhost:4100 --build http://localhost:4173",
+    "textdiff": "node site-prototipo/_tools/textdiff.mjs --proto http://localhost:4100 --build http://localhost:4173"
+  },
+  "dependencies": {
+    "@fontsource-variable/fraunces": "^5.2.5",
+    "@fontsource-variable/manrope": "^5.2.5",
+    "clsx": "^2.1.1",
+    "gsap": "^3.15.0",
+    "lenis": "1.1.18",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^4.3.2",
+    "pixelmatch": "^6.0.0",
+    "playwright": "^1.56.0",
+    "pngjs": "^7.0.0",
+    "sharp": "^0.34.4",
+    "typescript": "~5.9.2",
+    "vite": "^5.4.8"
+  }
+}

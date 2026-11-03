@@ -1,0 +1,92 @@
+/* ─── Mobile motion (03/11): phones and tablets (< 1024px) get their own scenes. Desktop (LIVE) is untouched:
+   every rule here sits under (max-width:1023px). The scenes are CSS sticky stages (no JS pin on touch: the
+   browser holds the stage, ScrollTrigger only scrubs), so they need a container that does not clip with
+   overflow:hidden (that would make it the sticky's scroll box): those sections clip with overflow:clip.
+   SCENE = (max-width:1023px) and (min-height:540px), the same query as SCENE in src/motion/core.ts. ─── */
+
+/* ── The sticky scenes: hero, gates, zoom, wall ── */
+@media (max-width:1023px) and (min-height:540px) and (prefers-reduced-motion:no-preference){
+  /* HERO: the doorway under the copy rises and opens to the whole screen, then the crest is stamped in */
+  html.js .hero__pin{height:230svh;min-height:0}
+  html.js .hero__stage{position:sticky;top:0;height:100svh;min-height:0;padding-top:clamp(84px,13svh,110px)}
+  html.js .hero__bg{will-change:transform,width,height}
+  html.js .stamp{font-size:clamp(40px,13vw,64px)}
+  html.js .stamp.i{font-size:clamp(46px,15vw,76px)}
+  html.js .stamps__line{max-width:30ch;font-size:10px;line-height:1.5;letter-spacing:.26em;text-align:center}
+
+  /* GATES: a short sticky walk; the adobe arch grows from the floor and fills the screen with the next act */
+  html.js .gate{height:165svh;padding:0;overflow:clip}
+  html.js .gate__stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--g-from)}   /* sticky makes a stacking context: the word's difference blend needs the room's colour inside it */
+  html.js .gate__arch,html.js .gate__side{display:block}
+  html.js .gate--light .gate__side{display:none}
+  html.js .gate__arch{width:34vmin;height:42vmin}
+  html.js .gate__label{position:absolute;inset:0;padding:0 var(--gl);mix-blend-mode:difference;color:#fff}
+  /* the gate above Served now ends black: the section's top fade starts from black, as on desktop */
+  html.js .serve::before{height:clamp(120px,22svh,200px);background:linear-gradient(180deg,var(--ink) 0%,rgba(17,17,16,.85) 30%,rgba(17,17,16,0) 100%)}
+
+  /* ZOOM: seven photos on a sticky stage, re-laid as a tall cluster for a portrait screen */
+  html.js .zoom{height:240svh;padding:0;overflow:clip}
+  html.js .zoom__stick{position:sticky;top:0;height:100svh;display:block;padding:0;overflow:hidden}
+  html.js .zoom__item{position:absolute;inset:0}
+  html.js .zoom__item>div{position:relative;border-radius:5px}
+  html.js .zoom__item:nth-child(1)>div{top:0!important;left:0!important;width:30vw!important;height:24svh!important}
+  html.js .zoom__item:nth-child(2)>div{top:-29svh!important;left:6vw!important;width:44vw!important;height:18svh!important}
+  html.js .zoom__item:nth-child(3)>div{top:-4svh!important;left:-36vw!important;width:26vw!important;height:30svh!important}
+  html.js .zoom__item:nth-child(4)>div{top:-2svh!important;left:34vw!important;width:26vw!important;height:20svh!important}
+  html.js .zoom__item:nth-child(5)>div{top:26svh!important;left:4vw!important;width:34vw!important;height:18svh!important}
+  html.js .zoom__item:nth-child(6)>div{top:22svh!important;left:-31vw!important;width:28vw!important;height:22svh!important}
+  html.js .zoom__item:nth-child(7)>div{top:21svh!important;left:33vw!important;width:22vw!important;height:14svh!important}
+  html.js .zoom__ctx{position:absolute;left:0;right:0;top:clamp(76px,11svh,100px);padding:0 var(--gl)}
+
+  /* WALL: the sideways walk on a sticky stage. --walk is the row's overflow: gutter + intro (84vw + 6vw) + three
+     cards (4:5, so .8 of their height) + three 16px gaps + 10vw at the end, minus the screen */
+  html.js .wall{--door:min(104vw,64svh);--walk:calc(var(--gl) + 48px + 2.4 * var(--door));height:calc(100svh + var(--walk) + 22svh);overflow:clip}
+  html.js .wall__pin{position:sticky;top:0;height:100svh;padding:0;overflow:hidden}
+  html.js .wall__track{position:absolute;left:0;top:0;height:100%;flex-direction:row;align-items:center;gap:16px;padding:0 10vw 0 var(--gl)}
+  html.js .wall__intro{flex:none;width:84vw;margin:0 6vw 0 0}
+  html.js .wdoor{flex:none;height:var(--door);width:auto;aspect-ratio:4/5;max-width:none;margin:0}
+}
+
+/* ── Lighter gestures, any phone height ── */
+@media (max-width:1023px) and (prefers-reduced-motion:no-preference){
+  /* KIDS: each drawing pops onto its card as the card arrives */
+  html.js .kc.rv .kc__art svg{transform:scale(.8) rotate(-4deg);transition:transform 1.2s var(--spring) .2s}
+  html.js .kc.rv.in .kc__art svg{transform:none}
+
+  /* REVIEWS INTRO: the orbit comes back, tall and narrow, running along the edges around the copy */
+  html.js .rint__stage{min-height:100svh;padding:96px var(--gl)}
+  html.js .orbit{display:block;--rx1:45vw;--ry1:35svh;--rx2:52vw;--ry2:43svh;--tile:52px}
+  html.js .orbit__lane--1 .orbit__seat{--tile:44px}
+  html.js .orbit__seat img{border-radius:12px}
+  html.js .rint__copy::before{content:"";position:absolute;inset:-14% -10%;z-index:-1;background:radial-gradient(closest-side,#fff 60%,rgba(255,255,255,0));pointer-events:none}
+
+  /* FIRST CLASS: the belt rides at the foot of the screen while the four steps go by, then settles in place */
+  html.js .steps{overflow:clip}
+  html.js .belt{position:sticky;bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+
+  /* ABOUT · CREST: the seal comes between the title and the three words, so the ring turns while you read them */
+  html.js .crest__copy{display:contents}
+  html.js .crest__grid{row-gap:0}
+  html.js .crest__seal{order:1;width:min(68vw,340px);margin-top:clamp(24px,6vw,40px)}
+  html.js .crest__words{order:2}
+  html.js .crest__q{order:3}
+}
+@media (min-width:760px) and (max-width:1023px) and (prefers-reduced-motion:no-preference){
+  html.js .belt{bottom:16px}   /* no mobile bar from 760px */
+}
+
+/* ── PROGRAMS: the growth chart as a horizontal ruler riding under the nav (it reads the chapter in view) ── */
+@media (max-width:1023px){
+  html.js .ruler{display:block;position:sticky;top:calc(68px + env(safe-area-inset-top,0px));z-index:6;height:0;align-self:start}
+  html.js .ruler__in{position:absolute;left:var(--gl);right:var(--gr);top:0;height:54px;display:flex;align-items:center;padding:0 18px;border-radius:var(--rp);background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 10px 26px -14px rgba(0,0,0,.35),inset 0 0 0 1px var(--line);container-type:inline-size;transition:transform .5s var(--ease)}
+  html.js body:has(#pnav.is-hidden) .ruler__in{transform:translateY(-56px)}
+  html.js .ruler__read{width:84px;flex:none}
+  html.js .ruler__read b{font-size:22px}
+  html.js .ruler__read span{margin-top:4px;font-size:8.5px;letter-spacing:.18em}
+  /* the vertical bar, turned a quarter: its top (adults) goes right, age 3 left; the labels turn back upright */
+  html.js .ruler__bar{--L:calc(100cqw - 140px);position:absolute;top:50%;right:calc(var(--L) / 2);width:36px;height:var(--L);max-height:none;margin-top:calc(var(--L) / -2);transform:rotate(90deg)}
+  html.js .ruler__ticks li{width:7px}
+  html.js .ruler__ticks li.l{width:12px}
+  html.js .ruler__ticks li span{left:23px;width:0;display:flex;justify-content:center;font-size:9px;transform:translateY(-50%) rotate(-90deg)}
+}
+@media (max-width:1023px) and (prefers-reduced-motion:reduce){html.js .ruler__in{transition:none}}

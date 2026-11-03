@@ -1,0 +1,102 @@
+<body class="page page--contact">
+{{DEFS}}
+
+{{NAV}}
+
+<header class="phero phero--short" id="top" aria-labelledby="ct-t">
+  <div class="phero__stage">
+    <div class="shell phero__copy">
+      <nav class="crumbs rv" aria-label="Breadcrumb"><a href="index.html">Home</a><svg class="ic"><use href="#i-arrow"/></svg><span aria-current="page">Contact</span></nav>
+      <h1 class="t t-1 d" id="ct-t"><span class="ln"><span>Come see</span></span><span class="ln"><span><em>the mat.</em></span></span></h1>
+      <p class="phero__lead rv" data-delay="1">Book a free class and we call you to confirm the day. Or just call: a person answers.</p>
+      <ul class="micro rv" data-delay="2"><li>1630 Rio Rancho Blvd SE, Ste D</li><li>505-414-8083</li><li>No card needed</li></ul>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════ THE PASS: the form is a ticket; the stub fills in as you choose ═══════════ -->
+<section class="book sec screen" id="start" aria-labelledby="bk-t">
+  <div class="shell book__grid">
+    <div class="book__copy">
+      <p class="act rv"><b>01</b>Free class · No card</p>
+      <h2 class="t t-2 d" id="bk-t"><span class="ln"><span>Your pass</span></span><span class="ln"><span><em>to the mat.</em></span></span></h2>
+      <p class="sub rv" data-delay="1">Fill it in and we call to confirm. Come ten minutes early in shorts and a t-shirt.</p>
+      <ul class="incl rv" data-delay="2">
+        <li><svg class="ic"><use href="#i-check"/></svg>Your first class is free</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Monthly sign-up specials</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Veterans: We Defy scholarships</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>City workers: One Pass</li>
+      </ul>
+    </div>
+    <form class="ticket rv" id="ticket" data-delay="1" novalidate>
+      <div class="ticket__main">
+        <p class="ticket__k">Gonzales Jiu-Jitsu · Free class</p>
+        <fieldset class="tk__set"><legend>Program</legend>
+          <div class="tk__opts" id="tkProg">
+            <label><input type="radio" name="prog" value="toddlers" required><span>Toddlers<small>4–5</small></span></label>
+            <label><input type="radio" name="prog" value="kids"><span>Kids<small>6–13</small></span></label>
+            <label><input type="radio" name="prog" value="adults"><span>Adults<small>all levels</small></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="tk__set"><legend>Day</legend><div class="tk__days" id="tkDays"><p class="tk__hint">Pick a program first.</p></div></fieldset>
+        <div class="tk__fields">
+          <label class="tk__f"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+          <label class="tk__f"><span>Phone</span><input type="tel" name="phone" autocomplete="tel" required></label>
+        </div>
+        <div class="tk__send"><button class="cta" type="submit">Book my free class<span class="cta__go"><svg class="ic"><use href="#i-arrow"/></svg><svg class="ic"><use href="#i-arrow"/></svg></span></button><small id="tkMsg">We reply during business hours.</small></div>
+      </div>
+      <div class="ticket__stub" aria-hidden="true">
+        <span class="stub__k">Admit one</span>
+        <div class="stub__rows">
+          <div><small>Program</small><b id="stProg">—</b></div>
+          <div><small>Day</small><b id="stDay">—</b></div>
+          <div><small>Time</small><b id="stTime">—</b></div>
+        </div>
+        <i class="stub__code"></i>
+        <span class="stub__stamp" id="stStamp">Booked</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════ VISIT: where the mat is, how to reach a person ═══════════ -->
+<section class="visit sec screen" id="visit" aria-labelledby="vi-t">
+  <div class="shell visit__grid">
+    <div class="vmap rv">
+      <img class="vmap__bg" src="img/g-14.webp" alt="" aria-hidden="true">
+      <iframe title="Map · Gonzales Jiu-Jitsu" src="https://www.google.com/maps?q=1630+Rio+Rancho+Blvd+SE+Ste+D,+Rio+Rancho,+NM+87124&hl=en&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <a class="vmap__dir" href="https://www.google.com/maps/dir/?api=1&destination=1630+Rio+Rancho+Blvd+SE+Ste+D,+Rio+Rancho,+NM+87124" target="_blank" rel="noopener">Get directions<span><svg class="ic"><use href="#i-out"/></svg></span></a>
+    </div>
+    <div class="vinfo">
+      <p class="act rv"><b>02</b>Visit</p>
+      <h2 class="t t-2 d" id="vi-t"><span class="ln"><span>Hwy 528,</span></span><span class="ln"><span><em>north of Intel.</em></span></span></h2>
+      <address class="vaddr rv">1630 Rio Rancho Blvd SE, Ste D<br>Rio Rancho, NM 87124</address>
+      <ul class="reach rv" data-delay="1">
+        <li><a href="tel:+15054148083"><span class="know__ic"><svg class="ic"><use href="#i-phone"/></svg></span><span><small>Call or text</small>505-414-8083</span></a><button type="button" class="reach__copy" data-copy="505-414-8083">Copy</button></li>
+        <li><a href="mailto:abie3737@gmail.com"><span class="know__ic"><svg class="ic"><use href="#i-mail"/></svg></span><span><small>Email</small>abie3737@gmail.com</span></a><button type="button" class="reach__copy" data-copy="abie3737@gmail.com">Copy</button></li>
+        <li><a href="https://www.instagram.com/gonzalesjiujitsu" target="_blank" rel="noopener"><span class="know__ic"><svg class="ic"><use href="#i-ig"/></svg></span><span><small>Instagram</small>@gonzalesjiujitsu</span></a></li>
+      </ul>
+      <div class="vhours rv" data-delay="2"><p class="vhours__k">Classes</p><dl id="vHours"></dl></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section class="faq sec screen" id="faq" aria-labelledby="faq-t">
+  <div class="shell">
+    <div class="head head--c">
+      <div style="display:grid;justify-items:center">
+        <p class="act rv"><b>03</b>Questions</p>
+        <h2 class="t t-2 d" id="faq-t"><span class="ln"><span>Before you <em>step on the mat.</em></span></span></h2>
+      </div>
+    </div>
+    <div class="faq__list" id="faqList"></div>
+    <p class="faq__foot rv">Anything else, call or text. A person answers. <a class="call" href="tel:+15054148083"><svg class="ic"><use href="#i-phone"/></svg><u>505-414-8083</u></a></p>
+  </div>
+</section>
+
+{{FOOTER}}
+
+<div class="bar"><a class="bar__tel" href="tel:+15054148083" aria-label="Call"><svg class="ic"><use href="#i-phone"/></svg></a><a class="bar__cta" href="#start">Book your free class</a></div>
+
+{{MODAL}}

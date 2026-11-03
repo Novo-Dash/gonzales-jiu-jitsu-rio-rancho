@@ -1,0 +1,14 @@
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-t">
+  <div class="modal__box">
+    <button class="modal__x" id="modalX" aria-label="Close"><svg class="ic"><use href="#i-x"/></svg></button>
+    <h3 id="m-t">Book your <em>free class</em></h3>
+    <p>Pick a program; we get back to you to confirm the day.</p>
+    <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Sent — talk soon'">
+      <select id="mProg" required><option value="">Program</option><option value="toddlers">Toddlers (4–5)</option><option value="kids">Kids (6–13)</option><option value="adults">Adults</option></select>
+      <input type="text" placeholder="Your name" required><input type="tel" placeholder="Phone" required>
+      <button class="cta" type="submit">Send <span class="cta__go"><svg class="ic"><use href="#i-arrow"/></svg><svg class="ic"><use href="#i-arrow"/></svg></span></button>
+      <small>No card needed to book. We reply during business hours.</small>
+    </form>
+  </div>
+</div>
+

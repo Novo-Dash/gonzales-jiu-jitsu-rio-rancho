@@ -13,7 +13,7 @@
 ## Pendências [CONFIRMAR] (PRD 20) — nunca no código publicado
 | Item | Status | Responsável |
 |---|---|---|
-| IDs GHL (`locationId`, `leadWebhookUuid`), Pixel, GA4, Ads (+labels), Clarity — `src/nd/client.ts` vazio: modal e ticket mostram o sucesso, mas nada é enviado (o kit não posta sem URL) | 🔴 | Arthur / app Novo Dash |
+| Pixel, GA4, Ads (+labels), Clarity: `src/nd/client.ts` vazio, o cliente não tem linha na `conversoes_tracking` do Supabase (conferido 03/11). GHL feito em 03/11: location i3KtvdSaQ1QE31Hj8z7L, webhook 1 HHlFrtd9GbA6LtnGvCqL, source Landing Page - Main | 🔴 | Arthur / app Novo Dash |
 | Domínio final e projeto Vercel (substitui gonzalesjj.com?) — `VITE_SITE_URL`; até lá o build é prévia noindex | 🔴 | Arthur |
 | Idade dos Toddlers: 4–5 (site/briefing) x 3–5 (resposta no Google) — manter 4–5 | 🟡 | cliente |
 | Horário da recepção do footer (Mon–Fri 4:30–8:30 PM / Sat 9–11 AM) x aulas às 11 AM ter/qui — e o `openingHours` do schema | 🟡 | cliente |

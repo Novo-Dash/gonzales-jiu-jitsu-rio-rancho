@@ -1,8 +1,7 @@
 // The only per-academy file of the Novo Dash kit. Filled from the Novo Dash app
 // (clients / conversoes_tracking) and kept in sync by the standards robot.
-// The GHL and tracking ids are still pending (memory/briefing.md): until they are
-// filled, the forms show their sent state and nothing leaves the page, and every
-// tracking helper is a silent no-op.
+// GHL ids filled on 03/11 (Gonzales BJJ - Rio Rancho NM). The tracking ids are still
+// pending: no row in conversoes_tracking, so every tracking helper is a silent no-op.
 export default {
   "academy": {
     "name": "Gonzales Jiu-Jitsu",
@@ -13,10 +12,10 @@ export default {
     "photo": "/img/hero.webp"
   },
   "ghl": {
-    "locationId": "",
-    "leadWebhookUuid": ""
+    "locationId": "i3KtvdSaQ1QE31Hj8z7L",
+    "leadWebhookUuid": "HHlFrtd9GbA6LtnGvCqL"
   },
-  "source": "Website - Gonzales",
+  "source": "Landing Page - Main",
   "tracking": {
     "pixel": "",
     "ga4": "",

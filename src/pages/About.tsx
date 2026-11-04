@@ -12,7 +12,7 @@ export default function About() {
   return (
     <Page page="about">
       <PageHero id="ab-t" crumb={hero.crumb} kick={hero.kick} h1={hero.h1} lead={hero.lead} micro={hero.micro} img={{ name: hero.img, alt: hero.alt, pos: hero.pos }}
-        cta={<><a className="cta" href="/contact" data-book>{hero.cta}<Go /></a><Call tel={site.tel}>{site.phone}</Call></>} />
+        cta={<><a className="cta" href="#book" data-book>{hero.cta}<Go /></a><Call tel={site.tel}>{site.phone}</Call></>} />
       <Crest />
       <Founders />
       <Gallery content={room} id="room" />

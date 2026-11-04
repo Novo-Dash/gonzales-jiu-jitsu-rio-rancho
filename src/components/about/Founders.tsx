@@ -40,7 +40,7 @@ export function Founders() {
         <div className={'shell fd' + (i % 2 ? ' fd--rev' : '')} key={p.id}>
           <figure className="fd__photo">
             <Img name={p.photo} alt={p.alt} loading="lazy" sizes="(max-width:979px) 92vw, 44vw" style={{ objectPosition: p.pos }} />
-            <a href="/contact" data-book data-prog={p.prog || undefined} aria-label={p.cta}></a>
+            <a href="#book" data-book data-prog={p.prog || undefined} aria-label={p.cta}></a>
           </figure>
           <div className="fd__body">
             <p className="fd__role">{p.role}</p>
@@ -53,7 +53,7 @@ export function Founders() {
             {p.quote && <blockquote className="fd__q">{p.quote}<cite><a href={site.krqe} target="_blank" rel="noopener">{p.source}</a></cite></blockquote>}
             <div className="fd__stats">{p.stats.map(([b, s]) => <div key={s}><b>{b}</b><span>{s}</span></div>)}</div>
             <div className="fd__acts">
-              <a className="cta cta--sm" href="/contact" data-book data-prog={p.prog || undefined}>{p.cta}<Go /></a>
+              <a className="cta cta--sm" href="#book" data-book data-prog={p.prog || undefined}>{p.cta}<Go /></a>
               <a className="call" href={site.tel}><Ic id="i-phone" /><u>{site.phone}</u></a>
             </div>
           </div>

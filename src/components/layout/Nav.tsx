@@ -8,11 +8,11 @@ import { Img } from '../shared/Img'
 /** The floating pill nav; it slides away while you scroll down past 400px (core.js). */
 export function Nav({ page }: { page: string }) {
   useLayoutEffect(() => {
-    const pnav = document.getElementById('pnav')!, modal = () => document.getElementById('modal')
+    const pnav = document.getElementById('pnav')!
     // a plain scroll listener over the whole page (03/11): the triggerless ScrollTrigger only reacted inside the
     // range measured at its last refresh, so once the page grew the nav stayed hidden from act III down
     let lastY = scrollY
-    const onScroll = () => { const y = scrollY; if (Math.abs(y - lastY) < 2) return; pnav.classList.toggle('is-hidden', y > lastY && y > 400 && !modal()?.classList.contains('open')); lastY = y }
+    const onScroll = () => { const y = scrollY; if (Math.abs(y - lastY) < 2) return; pnav.classList.toggle('is-hidden', y > lastY && y > 400 && !document.querySelector('.nd-overlay')); lastY = y }
     addEventListener('scroll', onScroll, { passive: true })
     return () => { removeEventListener('scroll', onScroll); pnav.classList.remove('is-hidden') }
   }, [])

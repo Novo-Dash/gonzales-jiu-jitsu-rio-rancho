@@ -8,6 +8,7 @@ import { StrictMode } from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom/server'
 import App from './App'
+import { BookingProvider } from './nd'
 import { srcSetOf } from './components/shared/Img'
 import { IS_PREVIEW, jsonLd, llms, MODIFIED, ROUTES, SITE, url } from './data/seo'
 
@@ -16,7 +17,9 @@ export { IS_PREVIEW, jsonLd, llms, MODIFIED, ROUTES, SITE, srcSetOf, url }
 export const render = (path: string) => renderToString(
   <StrictMode>
     <StaticRouter location={path}>
-      <App />
+      <BookingProvider>
+        <App />
+      </BookingProvider>
     </StaticRouter>
   </StrictMode>,
 )

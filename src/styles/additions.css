@@ -459,3 +459,17 @@ html:not(.js) .fd__bar{transform:none}
   html.js .hero__video video{width:100%;height:100%;aspect-ratio:auto;border-radius:0}
   html.js .hero__sound{bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 }
+
+/* Novo Dash booking kit (src/nd): the page's red buttons, ink panel, Manrope, pill buttons */
+.nd {
+  --nd-accent: #d7222c;
+  --nd-accent-ink: #ffffff;
+  --nd-panel: #111110;
+  --nd-font: "Manrope Variable", "Helvetica Neue", Arial, sans-serif;
+  --nd-font-display: "Manrope Variable", "Helvetica Neue", Arial, sans-serif;
+  --nd-display-case: none;
+  --nd-display-weight: 700;
+  --nd-button-radius: 999px;
+}
+/* /contact: the form sits on its own card beside the copy */
+.book__form { min-height: 420px; padding: clamp(20px, 3vw, 36px); border-radius: var(--rc); background: #fff; box-shadow: var(--sh-2), inset 0 0 0 1px var(--line); }

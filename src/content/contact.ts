@@ -17,22 +17,6 @@ export const ticket = {
   title: ['Your pass', '<em>to the mat.</em>'],
   sub: 'Fill it in and we call to confirm. Come ten minutes early in shorts and a t-shirt.',
   incl: ['Your first class is free', 'Monthly sign-up specials', 'Veterans: We Defy scholarships', 'City workers: One Pass'],
-  k: 'Gonzales Jiu-Jitsu · Free class',
-  program: 'Program',
-  progs: [['toddlers', 'Toddlers', '4–5'], ['kids', 'Kids', '6–13'], ['adults', 'Adults', 'all levels']],
-  stubProg: { toddlers: 'Toddlers', kids: 'Kids', adults: 'Adults' },
-  day: 'Day',
-  hint: 'Pick a program first.',
-  name: 'Name',
-  phone: 'Phone',
-  send: 'Book my free class',
-  sent: 'Sent',
-  msg: 'We reply during business hours.',
-  pick: 'Pick a program and a day.',
-  done: "Sent. We'll call you to confirm.",
-  stub: { k: 'Admit one', prog: 'Program', day: 'Day', time: 'Time', empty: '—', stamp: 'Booked' },
-  badName: 'Please enter your name.',
-  badPhone: 'Please enter a 10-digit U.S. phone number.',
 }
 
 export const visit = {

@@ -62,7 +62,7 @@ export function Footer() {
             </div>
             <nav className="foot__col fc" aria-label={footer.academy.title}><p className="foot__h">{footer.academy.title}</p><ul className="foot__links">
               {footer.academy.links.map(a => <li key={a.to}><Link to={a.to}>{a.label}</Link></li>)}
-              <li><a href="/contact" data-book>{footer.academy.book}</a></li>
+              <li><a href="#book" data-book>{footer.academy.book}</a></li>
               <li><a href={site.students} target="_blank" rel="noopener">{footer.academy.students}</a></li>
             </ul></nav>
             <div className="foot__col fc"><p className="foot__h">{footer.programs.title}</p><ul className="foot__links">

@@ -12,7 +12,7 @@ export default function Instructors() {
   return (
     <Page page="instructors">
       <PageHero id="in-t" crumb={hero.crumb} kick={hero.kick} h1={hero.h1} lead={hero.lead} micro={hero.micro} img={{ name: hero.img, alt: hero.alt, pos: hero.pos }}
-        cta={<><a className="cta" href="/contact" data-book>{hero.cta}<Go /></a><Call tel={site.tel}>{site.phone}</Call></>} />
+        cta={<><a className="cta" href="#book" data-book>{hero.cta}<Go /></a><Call tel={site.tel}>{site.phone}</Call></>} />
       <Champion more={{ label: staffLink, href: '#staff' }} />
       <CoachStage />
       <Staff />

@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { lenis } from './motion/core'
+import { BookPage } from './nd'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Home from './pages/Home'
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="/programs" element={<Programs />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/book" element={<BookPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

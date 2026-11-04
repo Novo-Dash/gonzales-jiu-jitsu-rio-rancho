@@ -7,12 +7,12 @@ import { Call, Go } from '../components/shared/Cta'
 import { PageHero } from '../components/shared/PageHero'
 import { site } from '../data/site'
 
-/** /contact — the ticket, the visit, the questions. Every "book" on this page scrolls to the ticket. */
+/** /contact: the booking form, the visit, the questions. */
 export default function Contact() {
   return (
-    <Page page="contact" bar={{ href: '#start', book: false }}>
+    <Page page="contact">
       <PageHero id="ct-t" crumb={hero.crumb} kick={hero.kick} h1={hero.h1} lead={hero.lead} micro={hero.micro} img={{ name: hero.img, alt: hero.alt, pos: hero.pos }}
-        cta={<><a className="cta" href="#start" data-book>{hero.cta}<Go /></a><Call tel={site.tel}>{site.phone}</Call></>} />
+        cta={<><a className="cta" href="#book" data-book>{hero.cta}<Go /></a><Call tel={site.tel}>{site.phone}</Call></>} />
       <Ticket />
       <Visit />
       <Faq act={faqHead.act} />

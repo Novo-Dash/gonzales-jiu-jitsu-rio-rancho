@@ -56,6 +56,10 @@
     {
       "source": "/contact",
       "destination": "/contact/index.html"
+    },
+    {
+      "source": "/book",
+      "destination": "/index.html"
     }
   ],
   "headers": [

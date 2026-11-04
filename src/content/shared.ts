@@ -1,4 +1,4 @@
-// The copy every page shares: nav, menu, footer, mobile bar, booking modal, FAQ.
+// The copy every page shares: nav, menu, footer, mobile bar, FAQ.
 export const nav = {
   home: 'Gonzales Jiu-Jitsu, home',
   pills: [
@@ -68,23 +68,6 @@ export const footer = {
 }
 
 export const bar = { call: 'Call', cta: 'Book your free class' }
-
-export const modal = {
-  close: 'Close',
-  title: 'Book your <em>free class</em>',
-  text: 'Pick a program; we get back to you to confirm the day.',
-  program: 'Program',
-  options: [
-    { value: 'toddlers', label: 'Toddlers (4–5)' },
-    { value: 'kids', label: 'Kids (6–13)' },
-    { value: 'adults', label: 'Adults' },
-  ],
-  name: 'Your name',
-  phone: 'Phone',
-  send: 'Send ',
-  sent: 'Sent, talk soon',
-  note: 'No card needed to book. We reply during business hours.',
-}
 
 export const faq = {
   title: ['Before you <em>step on the mat.</em>'],

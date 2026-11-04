@@ -36,7 +36,7 @@ export function MobileMenu({ page }: { page: string }) {
         ))}
       </nav>
       <div className="menu__foot">
-        <a className="cta" href="/contact" data-book>{menu.cta}<Go /></a>
+        <a className="cta" href="#book" data-book>{menu.cta}<Go /></a>
         <a className="call" href={site.tel}><Ic id="i-phone" /><u>{site.phone}</u></a>
         <p>{menu.address}</p>
       </div>

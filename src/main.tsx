@@ -3,11 +3,10 @@ import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import { initMotion } from './motion/core'
-import { captureAttribution } from './nd/attribution'
+import { BookingProvider } from './nd'
 import './styles/index.css'
 
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
-captureAttribution()
 initMotion()
 
 // The prerendered HTML is hydrated, not replaced: the hero photo and the lines already revealed stay
@@ -17,9 +16,12 @@ const root = document.getElementById('root')!
 const app = (
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <BookingProvider>
+        <App />
+      </BookingProvider>
     </BrowserRouter>
   </StrictMode>
 )
-if (root.firstElementChild) hydrateRoot(root, app)
-else createRoot(root).render(app)
+// /book is not prerendered: Vercel serves it the home page's HTML, so it renders from scratch
+if (root.firstElementChild && location.pathname !== '/book') hydrateRoot(root, app)
+else { root.textContent = ''; createRoot(root).render(app) }

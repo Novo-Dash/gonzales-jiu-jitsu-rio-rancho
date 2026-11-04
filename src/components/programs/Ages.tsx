@@ -59,7 +59,7 @@ export function Ages() {
               {ch.chips && <ul className="chips rv" data-delay="1">{ch.chips.map(x => <li key={x}>{x}</li>)}</ul>}
               <MiniWeek k={ch.k as Kind} />
               {ch.quote && <blockquote className="chap__q rv" data-delay="2">{ch.quote}<cite>{ch.cite}</cite></blockquote>}
-              <div className="chap__cta rv" data-delay="3"><a className="cta cta--sm" href="/contact" data-book data-prog={ch.prog}>{ch.cta}<Go /></a></div>
+              <div className="chap__cta rv" data-delay="3"><a className="cta cta--sm" href="#book" data-book data-prog={ch.prog}>{ch.cta}<Go /></a></div>
             </div>
           </article>
         ))}

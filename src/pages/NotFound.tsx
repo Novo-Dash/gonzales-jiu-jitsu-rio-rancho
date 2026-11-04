@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <Page page="404">
       <PageHero id="nf-t" crumb={notFound.crumb} kick={notFound.kick} h1={notFound.h1} lead={notFound.lead} micro={notFound.micro} img={{ name: 'drill', alt: '', pos: '50% 55%' }}
-        cta={<a className="cta" href="/contact" data-book>{notFound.cta}<Go /></a>} />
+        cta={<a className="cta" href="#book" data-book>{notFound.cta}<Go /></a>} />
     </Page>
   )
 }

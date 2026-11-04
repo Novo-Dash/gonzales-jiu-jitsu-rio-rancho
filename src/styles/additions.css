@@ -434,10 +434,10 @@ html:not(.js) .fd__bar{transform:none}
   .sched__tabs button{min-width:44px}
 }
 
-/* Phones: the hero doorway sits on the bottom of the first screen (the fixed bar used to fill the gap) (03/11) */
+/* Phones: the hero doorway sits on the bottom of the first screen (03/11). Anchored to the stage's bottom, out of
+   the flow, so it grows upward to the whole screen (as a flex item it was squeezed under the copy, 04/11) */
 @media (max-width:1023px) and (min-height:540px) and (prefers-reduced-motion:no-preference){
-  html.js .hero__stage{display:flex;flex-direction:column}
-  html.js .hero__bg{margin-top:auto;margin-bottom:0}
+  html.js .hero__bg{position:absolute;left:0;right:0;bottom:0;margin:0 auto}
 }
 /* /programs · mini week: a narrow day tile puts AM/PM under the figures instead of past the button's edge (03/11) */
 .mweek__d{container-type:inline-size}

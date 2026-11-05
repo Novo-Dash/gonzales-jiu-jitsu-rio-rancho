@@ -457,7 +457,7 @@ html:not(.js) .fd__bar{transform:none}
   html.js .hero__pin{height:330svh}
   html.js .hero__video{display:grid}
   html.js .hero__video video{width:100%;height:100%;aspect-ratio:auto;border-radius:0}
-  html.js .hero__sound{bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+  html.js .hero__sound{bottom:calc(24px + env(safe-area-inset-bottom,0px));bottom:calc(100lvh - 100svh + 24px + env(safe-area-inset-bottom,0px))}   /* inside the svh part of the lvh stage: never under Safari's bar */
 }
 
 /* Novo Dash booking kit (src/nd): the page's red buttons, ink panel, Manrope, pill buttons */

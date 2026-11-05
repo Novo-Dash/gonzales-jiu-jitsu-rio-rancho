@@ -4,11 +4,13 @@
    overflow:hidden (that would make it the sticky's scroll box): those sections clip with overflow:clip.
    SCENE = (max-width:1023px) and (min-height:540px), the same query as SCENE in src/motion/core.ts. ─── */
 
-/* ── The sticky scenes: hero, gates, zoom, wall ── */
+/* ── The sticky scenes: hero, gates ──
+   The stages are 100lvh, not 100svh (05/11): with Safari's bar collapsed the screen is taller than svh and the
+   next section showed as a white band under the stage. With the bar out, the stage's foot just sits under it. */
 @media (max-width:1023px) and (min-height:540px) and (prefers-reduced-motion:no-preference){
   /* HERO: the doorway under the copy rises and opens to the whole screen, then the crest is stamped in */
   html.js .hero__pin{height:230svh;min-height:0}
-  html.js .hero__stage{position:sticky;top:0;height:100svh;min-height:0;padding-top:clamp(84px,13svh,110px)}
+  html.js .hero__stage{position:sticky;top:0;height:100vh;height:100lvh;min-height:0;padding-top:clamp(84px,13svh,110px)}
   html.js .hero__bg{will-change:transform,width,height}
   html.js .stamp{font-size:clamp(40px,13vw,64px)}
   html.js .stamp.i{font-size:clamp(46px,15vw,76px)}
@@ -16,7 +18,7 @@
 
   /* GATES: a short sticky walk; the adobe arch grows from the floor and fills the screen with the next act */
   html.js .gate{height:165svh;padding:0;overflow:clip}
-  html.js .gate__stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--g-from)}   /* sticky makes a stacking context: the word's difference blend needs the room's colour inside it */
+  html.js .gate__stage{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;background:var(--g-from)}   /* sticky makes a stacking context: the word's difference blend needs the room's colour inside it */
   html.js .gate__arch,html.js .gate__side{display:block}
   html.js .gate--light .gate__side{display:none}
   html.js .gate__arch{width:34vmin;height:42vmin}

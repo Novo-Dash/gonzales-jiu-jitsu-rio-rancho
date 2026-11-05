@@ -14,13 +14,28 @@ export function Hero() {
     // the video (03/11): loaded the first time the scroll gets near it, playing only while it is on screen
     const box = hero.querySelector<HTMLElement>('#heroVideo')!, vid = box.querySelector('video')!
     const snd = box.querySelector<HTMLButtonElement>('.hero__sound')!
+    // plays once (05/11): when it ends it stays on its last frame; scrolling back over it does not start it again
+    let done = false
     const video = (shown: boolean) => {
       if (shown && !vid.src) { vid.src = vid.dataset.src!; vid.load() }
-      if (shown && vid.paused) vid.play().catch(() => {})
+      if (shown && vid.paused && !done) vid.play().catch(() => {})
       if (!shown && !vid.paused) vid.pause()
     }
-    const toggleSound = () => { vid.muted = !vid.muted; snd.setAttribute('aria-pressed', String(!vid.muted)); snd.querySelector('span')!.textContent = vid.muted ? snd.dataset.on! : snd.dataset.off!; if (!vid.muted) vid.play().catch(() => {}) }
+    // the button shows the STATE (05/11): muted reads "Sound off", with the audio on it reads "Sound on"
+    const sound = (on: boolean) => {
+      vid.muted = !on; snd.setAttribute('aria-pressed', String(on)); snd.querySelector('span')!.textContent = on ? snd.dataset.on! : snd.dataset.off!
+    }
+    let scrollAt = 0
+    const toggleSound = () => {
+      sound(vid.muted); scrollAt = scrollY
+      if (!vid.muted) { if (vid.ended) { done = false; vid.currentTime = 0 } vid.play().catch(() => {}) }
+    }
+    // scrolling away with the sound on mutes it (05/11); a few px of slack for the smooth scroll still settling
+    const onScroll = () => { if (!vid.muted && Math.abs(scrollY - scrollAt) > 24) sound(false) }
+    const onEnded = () => { done = true }
     snd.addEventListener('click', toggleSound)
+    addEventListener('scroll', onScroll, { passive: true })
+    vid.addEventListener('ended', onEnded)
     const ctx = gsap.context(() => {
       mm.add(LIVE, () => {
         if (!motion) return
@@ -70,7 +85,7 @@ export function Hero() {
       // phones on their side and wide-but-short windows: the still hero, as before
       mm.add(`(max-width:1023px) and (max-height:539px), ${SHORT}`, () => { gsap.set('#stamps', { display: 'none' }) })
     }, hero)
-    return () => { snd.removeEventListener('click', toggleSound); mm.revert(); ctx.revert(); vid.pause() }
+    return () => { snd.removeEventListener('click', toggleSound); removeEventListener('scroll', onScroll); vid.removeEventListener('ended', onEnded); mm.revert(); ctx.revert(); vid.pause() }
   }, [])
   return (
     <header className="hero" id="top" ref={ref}>
@@ -86,8 +101,8 @@ export function Hero() {
           </div>
           <div className="hero__bg" id="heroBg"><Img name="hero" alt={c.imgAlt} fetchPriority="high" sizes="(max-width:1023px) calc(100vw - 32px), 100vw" /><div className="hero__dim" id="heroDim"></div><div className="hero__veil" id="heroVeil"></div><div className="hero__fade" id="heroFade"></div></div>
           <div className="hero__video" id="heroVideo">
-            <video muted loop playsInline preload="none" poster="/video/come-on-in-poster.webp" data-src="/video/come-on-in.mp4" aria-label={c.videoLabel}></video>
-            <button type="button" className="hero__sound" aria-pressed="false" data-on={c.soundOn} data-off={c.soundOff}><span>{c.soundOn}</span></button>
+            <video muted playsInline preload="none" poster="/video/come-on-in-poster.webp" data-src="/video/come-on-in.mp4" aria-label={c.videoLabel}></video>
+            <button type="button" className="hero__sound" aria-pressed="false" data-on={c.soundOn} data-off={c.soundOff}><span>{c.soundOff}</span></button>
           </div>
           <div className="stamps" id="stamps" aria-hidden="true">
             <div className="stamps__box">

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from 'react'
 import { zoom as c } from '../../content/home'
-import { gsap, LIVE, motion, SCENE } from '../../motion/core'
+import { gsap, lateTrigger, LIVE, motion, SCENE } from '../../motion/core'
 import { Img } from '../shared/Img'
 import { rich } from '../shared/Rich'
 
@@ -25,14 +25,18 @@ export function Zoom() {
         tl.fromTo(items, { yPercent: 11 }, { yPercent: 0, ease: 'power1.out', duration: .35, force3D: false }, 0)
         tl.to('#zoomCtx', { autoAlpha: 0, y: -50, duration: .09, ease: 'power1.in' }, .01)   // the line is gone before the photos reach it
       })
-      // PHONES: the same zoom on a sticky stage, the seven photos re-laid as a tall cluster for a portrait screen (mobile.css)
+      // PHONES (05/11, Adryan): not driven by the scroll. The section is one screen tall; when it arrives the seven
+      // photos come in on their own, slowly, and grow until they take the whole screen (an entrance, played once)
       mm.add(SCENE, () => {
         if (!motion) return
         const items = gsap.utils.toArray<HTMLElement>(root.querySelectorAll('.zoom__item')), rates = [4.4, 5, 6, 5, 6, 8, 9]
-        const tl = gsap.timeline({ scrollTrigger: { trigger: root, start: 'top top', end: 'bottom bottom', scrub: true, onUpdate: moving } })
-        items.forEach((it, i) => tl.fromTo(it, { scale: .55 }, { scale: rates[i % rates.length], ease: 'none', duration: 1, force3D: false }, 0))
-        tl.fromTo(items, { yPercent: 12 }, { yPercent: 0, ease: 'power1.out', duration: .35, force3D: false }, 0)
-        tl.fromTo('#zoomCtx', { autoAlpha: 1, y: 0 }, { autoAlpha: 0, y: -40, duration: .12, ease: 'power1.in' }, .02)
+        const tl = gsap.timeline({ paused: true })
+        tl.fromTo(items, { autoAlpha: 0, yPercent: 16 }, { autoAlpha: 1, yPercent: 12, duration: .9, ease: 'power2.out', stagger: .08, force3D: false }, 0)
+        items.forEach((it, i) => tl.fromTo(it, { scale: .55 }, { scale: rates[i % rates.length], ease: 'power2.inOut', duration: 3.6, force3D: false }, 1.5))
+        tl.to(items, { yPercent: 0, ease: 'power1.out', duration: 1.3, force3D: false }, 1.5)
+        tl.fromTo('#zoomCtx', { autoAlpha: 1, y: 0 }, { autoAlpha: 0, y: -40, duration: .6, ease: 'power1.in' }, 1.9)
+        const st = lateTrigger({ trigger: root, start: 'top 55%', once: true, onEnter: () => tl.play() })
+        return () => { st.kill(); tl.kill() }
       })
     }, root)
     return () => { clearTimeout(idle); stick.classList.remove('is-moving'); mm.revert(); ctx.revert() }

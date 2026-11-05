@@ -24,8 +24,9 @@
   /* the gate above Served now ends black: the section's top fade starts from black, as on desktop */
   html.js .serve::before{height:clamp(120px,22svh,200px);background:linear-gradient(180deg,var(--ink) 0%,rgba(17,17,16,.85) 30%,rgba(17,17,16,0) 100%)}
 
-  /* ZOOM: seven photos on a sticky stage, re-laid as a tall cluster for a portrait screen */
-  html.js .zoom{height:240svh;padding:0;overflow:clip}
+  /* ZOOM: seven photos re-laid as a tall cluster for a portrait screen, one screen tall; they play in on their own
+     when the section arrives (Zoom.tsx), the scroll does not drive them (05/11) */
+  html.js .zoom{height:100svh;padding:0;overflow:clip}
   html.js .zoom__stick{position:sticky;top:0;height:100svh;display:block;padding:0;overflow:hidden}
   html.js .zoom__item{position:absolute;inset:0}
   html.js .zoom__item>div{position:relative;border-radius:5px}
@@ -37,14 +38,6 @@
   html.js .zoom__item:nth-child(6)>div{top:22svh!important;left:-31vw!important;width:28vw!important;height:22svh!important}
   html.js .zoom__item:nth-child(7)>div{top:21svh!important;left:33vw!important;width:22vw!important;height:14svh!important}
   html.js .zoom__ctx{position:absolute;left:0;right:0;top:clamp(76px,11svh,100px);padding:0 var(--gl)}
-
-  /* WALL: the sideways walk on a sticky stage. --walk is the row's overflow: gutter + intro (84vw + 6vw) + three
-     cards (4:5, so .8 of their height) + three 16px gaps + 10vw at the end, minus the screen */
-  html.js .wall{--door:min(104vw,64svh);--walk:calc(var(--gl) + 48px + 2.4 * var(--door));height:calc(100svh + var(--walk) + 22svh);overflow:clip}
-  html.js .wall__pin{position:sticky;top:0;height:100svh;padding:0;overflow:hidden}
-  html.js .wall__track{position:absolute;left:0;top:0;height:100%;flex-direction:row;align-items:center;gap:16px;padding:0 10vw 0 var(--gl)}
-  html.js .wall__intro{flex:none;width:84vw;margin:0 6vw 0 0}
-  html.js .wdoor{flex:none;height:var(--door);width:auto;aspect-ratio:4/5;max-width:none;margin:0}
 }
 
 /* ── Lighter gestures, any phone height ── */

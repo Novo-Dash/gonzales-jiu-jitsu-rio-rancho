@@ -24,20 +24,6 @@
   /* the gate above Served now ends black: the section's top fade starts from black, as on desktop */
   html.js .serve::before{height:clamp(120px,22svh,200px);background:linear-gradient(180deg,var(--ink) 0%,rgba(17,17,16,.85) 30%,rgba(17,17,16,0) 100%)}
 
-  /* ZOOM: seven photos re-laid as a tall cluster for a portrait screen, one screen tall; they play in on their own
-     when the section arrives (Zoom.tsx), the scroll does not drive them (05/11) */
-  html.js .zoom{height:100svh;padding:0;overflow:clip}
-  html.js .zoom__stick{position:sticky;top:0;height:100svh;display:block;padding:0;overflow:hidden}
-  html.js .zoom__item{position:absolute;inset:0}
-  html.js .zoom__item>div{position:relative;border-radius:5px}
-  html.js .zoom__item:nth-child(1)>div{top:0!important;left:0!important;width:30vw!important;height:24svh!important}
-  html.js .zoom__item:nth-child(2)>div{top:-29svh!important;left:6vw!important;width:44vw!important;height:18svh!important}
-  html.js .zoom__item:nth-child(3)>div{top:-4svh!important;left:-36vw!important;width:26vw!important;height:30svh!important}
-  html.js .zoom__item:nth-child(4)>div{top:-2svh!important;left:34vw!important;width:26vw!important;height:20svh!important}
-  html.js .zoom__item:nth-child(5)>div{top:26svh!important;left:4vw!important;width:34vw!important;height:18svh!important}
-  html.js .zoom__item:nth-child(6)>div{top:22svh!important;left:-31vw!important;width:28vw!important;height:22svh!important}
-  html.js .zoom__item:nth-child(7)>div{top:21svh!important;left:33vw!important;width:22vw!important;height:14svh!important}
-  html.js .zoom__ctx{position:absolute;left:0;right:0;top:clamp(76px,11svh,100px);padding:0 var(--gl)}
 }
 
 /* ── Lighter gestures, any phone height ── */

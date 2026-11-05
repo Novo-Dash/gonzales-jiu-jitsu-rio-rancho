@@ -20,7 +20,15 @@ export const gates = [
 
 export const zoom = {
   label: 'The mat',
-  photos: ['hero', 'kids', 'adults', 'toddlers', 'women', 'roll', 'drill'],
+  photos: [
+    ['hero', 'The Gonzales Jiu-Jitsu team on the mat in Rio Rancho, NM'],
+    ['kids', 'Kids Brazilian Jiu-Jitsu class practicing a takedown in Rio Rancho'],
+    ['adults', 'Adults rolling in a Brazilian Jiu-Jitsu class in Rio Rancho'],
+    ['toddlers', 'Toddlers jiu-jitsu class for ages 4 to 5 in Rio Rancho, NM'],
+    ['women', 'Women training jiu-jitsu at Gonzales Jiu-Jitsu'],
+    ['roll', 'Two students rolling during open mat in Rio Rancho'],
+    ['drill', 'Coaches drilling technique with kids on the jiu-jitsu mat'],
+  ],
   eyebrow: 'Act I · Family',
   line: 'One mat. <em>Every age.</em>',
   sub: 'Toddlers at 4:30, Kids at 5, Adults at 6. Same floor, same night.',

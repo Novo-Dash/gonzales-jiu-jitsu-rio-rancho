@@ -40,7 +40,7 @@ export function Zoom() {
   return (
     <section className="zoom" id="act1" aria-label={c.label} ref={ref}>
       <div className="zoom__stick" id="zoomStick">
-        {c.photos.map(p => <div className="zoom__item" key={p}><div><Img name={p} alt="" loading="lazy" decoding="async" fetchPriority="low" /></div></div>)}
+        {c.photos.map(([p, alt]) => <div className="zoom__item" key={p}><div><Img name={p} alt={alt} loading="lazy" decoding="async" fetchPriority="low" /></div></div>)}
         <div className="zoom__ctx" id="zoomCtx"><p className="label">{c.eyebrow}</p><b>{rich(c.line)}</b><span>{c.sub}</span></div>
       </div>
     </section>

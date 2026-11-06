@@ -10,12 +10,12 @@ export type Route = { path: string; page: string; title: string; description: st
 
 // PRD 10.3, verbatim.
 export const ROUTES: Route[] = [
-  { path: '/', page: 'home', title: 'Gonzales Jiu-Jitsu | Kids & Adult Jiu-Jitsu in Rio Rancho, NM | Free Trial Class', description: 'Toddlers, kids and adult Brazilian Jiu-Jitsu in Rio Rancho, NM, run by two-time IBJJF No-Gi World Champion Abie Gonzales and his family. Your first class is free. Call 505-414-8083.' },
+  { path: '/', page: 'home', title: 'Gonzales Jiu-Jitsu | Kids & Adult Jiu-Jitsu in Rio Rancho, NM | Free Trial Class', description: 'Toddlers, kids and adult Brazilian Jiu-Jitsu in Rio Rancho, NM, run by two-time IBJJF No-Gi World Champion Abie Gonzales and his family. Your first class is free. Call 505-477-6612.' },
   { path: '/about', page: 'about', crumb: 'About', title: 'About | Gonzales Jiu-Jitsu, Rio Rancho NM', description: 'A family academy in Rio Rancho, NM: founded in 2024 by Abie and Laura Gonzales, two U.S. Army veterans. Competition, Family, Community.' },
   { path: '/instructors', page: 'instructors', crumb: 'Instructors', title: 'Instructors | Gonzales Jiu-Jitsu, Rio Rancho NM', description: 'Meet the coaches at Gonzales Jiu-Jitsu in Rio Rancho, NM: head instructor Abie Gonzales, Laura Gonzales, black belts Tito Valdez and Adriana Rascon, and Brandon Romero. Every coach is IBJJF certified.' },
   { path: '/programs', page: 'programs', crumb: 'Programs', title: 'Programs | Toddlers, Kids & Adult Jiu-Jitsu | Gonzales Jiu-Jitsu', description: 'Toddlers 4–5, Kids 6–13 and Adults from Fundamentals to Advanced. Gi and No-Gi, six days a week in Rio Rancho, NM. First class free.' },
   { path: '/schedule', page: 'schedule', crumb: 'Schedule', title: 'Class Schedule | Gonzales Jiu-Jitsu, Rio Rancho NM', description: 'Weekly Brazilian Jiu-Jitsu schedule: Toddlers, Kids, Adult Fundamentals, All Levels, Advanced and Open Mat, Monday to Saturday.' },
-  { path: '/contact', page: 'contact', crumb: 'Contact', title: 'Contact & Free Class | Gonzales Jiu-Jitsu, Rio Rancho NM', description: '1630 Rio Rancho Blvd SE, Ste D, Rio Rancho, NM. Call 505-414-8083 or book your free class online.' },
+  { path: '/contact', page: 'contact', crumb: 'Contact', title: 'Contact & Free Class | Gonzales Jiu-Jitsu, Rio Rancho NM', description: '1630 Rio Rancho Blvd SE, Ste D, Rio Rancho, NM. Call 505-477-6612 or book your free class online.' },
 ]
 
 export const url = (path: string) => SITE + (path === '/' ? '/' : path)
@@ -32,7 +32,7 @@ function academy() {
     logo: `${SITE}/img/logo-ink.png`,
     image: [`${SITE}/og.jpg`, `${SITE}/img/hero.webp`],
     description: 'Brazilian Jiu-Jitsu academy in Rio Rancho, NM, for toddlers (4–5), kids (6–13) and adults, Gi and No-Gi, run by two-time IBJJF No-Gi World Champion Abie Gonzales and his wife Laura, both U.S. Army veterans. First class free.',
-    telephone: '+1-505-414-8083',
+    telephone: '+1-505-477-6612',
     email: site.email,
     address: { '@type': 'PostalAddress', streetAddress: '1630 Rio Rancho Blvd SE, Ste D', addressLocality: 'Rio Rancho', addressRegion: 'NM', postalCode: '87124', addressCountry: 'US' },
     // from the Google Maps result for the address (02/11/2026)
@@ -79,7 +79,7 @@ export function llms() {
 
 ## Contact
 - Address: 1630 Rio Rancho Blvd SE, Ste D, Rio Rancho, NM 87124 (Highway 528, just north of Intel)
-- Phone (call or text): 505-414-8083
+- Phone (call or text): 505-477-6612
 - Email: ${site.email}
 - Instagram: ${site.instagram}
 - Serves Rio Rancho, Albuquerque and Corrales
@@ -92,7 +92,7 @@ export function llms() {
 
 ## Getting started
 - The first class is free. No experience needed. Bring shorts and a t-shirt; arrive ten minutes early.
-- Memberships change with the monthly sign-up special: call or text 505-414-8083 for this month's price.
+- Memberships change with the monthly sign-up special: call or text 505-477-6612 for this month's price.
 - Veterans can train through We Defy Foundation scholarships; city workers (police, fire, city employees) through One Pass, the City Government insurance plan.
 - Every coach is IBJJF certified. Coaches: Abie Gonzales (black belt, head instructor), Laura Gonzales (assistant kids instructor), Tito Valdez (black belt), Adriana Rascon (black belt), Brandon Romero (assistant kids instructor, Army veteran).
 - Front desk hours: Mon and Tue 4:30–8 PM, Wed 4:30–8:30 PM, Thu 5–8:30 PM, Fri 5–8 PM, Sat 9–11 AM, Sun closed.

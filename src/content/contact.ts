@@ -5,7 +5,7 @@ export const hero = {
   cta: 'Book your free class',
   h1: ['Come see', '<em>the mat.</em>'],
   lead: 'Book a free class and we call you to confirm the day. Or just call: a person answers.',
-  micro: ['1630 Rio Rancho Blvd SE, Ste D', '505-414-8083', 'No card needed'],
+  micro: ['1630 Rio Rancho Blvd SE, Ste D', '505-477-6612', 'No card needed'],
   // the doorway photo, as on the other pages (03/11): not used by any other hero
   img: 'roll',
   alt: 'Two students rolling on the mat at Gonzales Jiu-Jitsu',

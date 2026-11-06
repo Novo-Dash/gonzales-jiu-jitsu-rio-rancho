@@ -1,8 +1,8 @@
 // The academy's contact data, one place for every page (PRD 10.0).
 export const site = {
   name: 'Gonzales Jiu-Jitsu',
-  phone: '505-414-8083',
-  tel: 'tel:+15054148083',
+  phone: '505-477-6612',
+  tel: 'tel:+15054776612',
   // the academy's address (briefing 03/11), replacing Abie's personal one
   email: 'team@gonzalesjiujitsu.org',
   instagram: 'https://www.instagram.com/gonzalesjiujitsu',

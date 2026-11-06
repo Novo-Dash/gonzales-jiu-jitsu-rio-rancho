@@ -2,7 +2,7 @@
 
 ## Cliente (PRD 10.0)
 - Gonzales Jiu-Jitsu · 1630 Rio Rancho Blvd SE, Ste D · Rio Rancho, NM 87124 · Hwy 528, north of Intel
-- 505-414-8083 (`tel:+15054148083`) · abie3737@gmail.com · instagram.com/gonzalesjiujitsu · site atual gonzalesjj.com
+- 505-477-6612 (`tel:+15054776612`) · abie3737@gmail.com · instagram.com/gonzalesjiujitsu · site atual gonzalesjj.com
 - Abie Gonzales: black belt, head instructor, 2x IBJJF No-Gi World Champion, 20 anos U.S. Army, 3 tours no Iraque, Bronze Star, wrestling e MMA
 - Laura Gonzales: co-owner, coach, ex-soldado, instrutora de Army Combatives (citação KRQE)
 - Coach Brandon · 3 filhos treinam · coaches IBJJF certified

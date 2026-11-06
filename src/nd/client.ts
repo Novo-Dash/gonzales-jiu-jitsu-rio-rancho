@@ -3,7 +3,7 @@
 export default {
   "academy": {
     "name": "Gonzales Jiu-Jitsu",
-    "phone": "(505) 414-8083",
+    "phone": "(505) 477-6612",
     "address": "1630 Rio Rancho Blvd SE Ste D, Rio Rancho, NM 87124",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=1630%20Rio%20Rancho%20Blvd%20SE%20Ste%20D%2C%20Rio%20Rancho%2C%20NM%2087124",
     "logo": "/img/logo-white.png",

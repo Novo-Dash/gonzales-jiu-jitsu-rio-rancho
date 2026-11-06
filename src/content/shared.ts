@@ -8,7 +8,7 @@ export const nav = {
     { to: '/schedule', page: 'schedule', label: 'Schedule' },
     { to: '/contact', page: 'contact', label: 'Contact' },
   ],
-  callLabel: 'Call 505-414-8083',
+  callLabel: 'Call 505-477-6612',
   menu: 'Menu',
 }
 
@@ -82,5 +82,5 @@ export const notFound = {
   h1: ['This page', '<em>is off the mat.</em>'],
   lead: 'The link may be old. Everything else is one tap away: the programs, the week, and your free class.',
   cta: 'Book your free class',
-  micro: ['1630 Rio Rancho Blvd SE, Ste D', '505-414-8083'],
+  micro: ['1630 Rio Rancho Blvd SE, Ste D', '505-477-6612'],
 }

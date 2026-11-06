@@ -1,7 +1,7 @@
 # PRD GJJ-001 · Gonzales Jiu-Jitsu · Site completo (port literal do protótipo aprovado)
 
 **Padrão:** BLACK-BELT-UX v5.1 · **Modo:** CLIENT · **Execução:** autônoma (port, sem design pass)
-**Cliente:** Gonzales Jiu-Jitsu · 1630 Rio Rancho Blvd SE, Ste D · Rio Rancho, NM 87124 · 505-414-8083
+**Cliente:** Gonzales Jiu-Jitsu · 1630 Rio Rancho Blvd SE, Ste D · Rio Rancho, NM 87124 · 505-477-6612
 **Pasta do projeto:** `D:\DOCUMENTOS\NovoDash\gonzales-jiu-jitsu-rio-rancho-nm\`
 **Fonte da verdade visual:** `D:\DOCUMENTOS\NovoDash\gonzales-jiu-jitsu-rio-rancho-nm\site-prototipo\`
 **Protótipo publicado (referência ao vivo):** https://claude.ai/artifact/EJqq3XBJtEGoCssV6jgcxf
@@ -255,7 +255,7 @@ das ênfases muda visivelmente sem eles; o `parity.mjs` acusa).
 
 ### 10.0 Dados do cliente (para `briefing.md` e `data/site.ts`)
 Gonzales Jiu-Jitsu · 1630 Rio Rancho Blvd SE, Ste D, Rio Rancho, NM 87124 · Hwy 528, north of Intel ·
-505-414-8083 (`tel:+15054148083`) · abie3737@gmail.com · instagram.com/gonzalesjiujitsu · site atual
+505-477-6612 (`tel:+15054776612`) · abie3737@gmail.com · instagram.com/gonzalesjiujitsu · site atual
 gonzalesjj.com · Abie Gonzales (black belt, head instructor, 2× IBJJF No-Gi World Champion, 20 anos de
 U.S. Army, 3 tours no Iraque, Bronze Star, wrestling e MMA) · Laura Gonzales (co-owner, coach, ex-soldado,
 instrutora de Army Combatives; citação da KRQE) · Coach Brandon · 3 filhos treinam · coaches IBJJF
@@ -302,11 +302,11 @@ class · monthly sign-up specials · 17 aulas/semana, domingo fechado.
 ### 10.3 Títulos e descrições por página (head)
 | Rota | `<title>` | meta description |
 |---|---|---|
-| `/` | Gonzales Jiu-Jitsu \| Kids & Adult Jiu-Jitsu in Rio Rancho, NM \| Free Trial Class | Toddlers, kids and adult Brazilian Jiu-Jitsu in Rio Rancho, NM, run by two-time IBJJF No-Gi World Champion Abie Gonzales and his family. Your first class is free. Call 505-414-8083. |
+| `/` | Gonzales Jiu-Jitsu \| Kids & Adult Jiu-Jitsu in Rio Rancho, NM \| Free Trial Class | Toddlers, kids and adult Brazilian Jiu-Jitsu in Rio Rancho, NM, run by two-time IBJJF No-Gi World Champion Abie Gonzales and his family. Your first class is free. Call 505-477-6612. |
 | `/about` | About \| Gonzales Jiu-Jitsu, Rio Rancho NM | A family academy in Rio Rancho, NM: founded in 2024 by Abie and Laura Gonzales, two U.S. Army veterans. Competition, Family, Community. |
 | `/programs` | Programs \| Toddlers, Kids & Adult Jiu-Jitsu \| Gonzales Jiu-Jitsu | Toddlers 4–5, Kids 6–13 and Adults from Fundamentals to Advanced. Gi and No-Gi, six days a week in Rio Rancho, NM. First class free. |
 | `/schedule` | Class Schedule \| Gonzales Jiu-Jitsu, Rio Rancho NM | Weekly Brazilian Jiu-Jitsu schedule: Toddlers, Kids, Adult Fundamentals, All Levels, Advanced and Open Mat, Monday to Saturday. |
-| `/contact` | Contact & Free Class \| Gonzales Jiu-Jitsu, Rio Rancho NM | 1630 Rio Rancho Blvd SE, Ste D, Rio Rancho, NM. Call 505-414-8083 or book your free class online. |
+| `/contact` | Contact & Free Class \| Gonzales Jiu-Jitsu, Rio Rancho NM | 1630 Rio Rancho Blvd SE, Ste D, Rio Rancho, NM. Call 505-477-6612 or book your free class online. |
 
 ### 10.4 Links
 `index.html` → `/`, `about.html` → `/about`, `programs.html` → `/programs`, `schedule.html` →

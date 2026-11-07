@@ -13,7 +13,7 @@ const routes = (): Plugin => ({
   name: 'prerendered-routes',
   configurePreviewServer(server) {
     server.middlewares.use((req, _res, next) => {
-      const m = req.url?.match(/^\/(about|instructors|programs|schedule|contact)(\?.*)?$/)
+      const m = req.url?.match(/^\/(about|instructors|programs|schedule|offer|contact)(\?.*)?$/)
       if (m) req.url = `/${m[1]}/index.html${m[2] ?? ''}`
       next()
     })

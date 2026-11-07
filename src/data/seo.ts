@@ -15,6 +15,7 @@ export const ROUTES: Route[] = [
   { path: '/instructors', page: 'instructors', crumb: 'Instructors', title: 'Instructors | Gonzales Jiu-Jitsu, Rio Rancho NM', description: 'Meet the coaches at Gonzales Jiu-Jitsu in Rio Rancho, NM: head instructor Abie Gonzales, Laura Gonzales, black belts Tito Valdez and Adriana Rascon, and Brandon Romero. Every coach is IBJJF certified.' },
   { path: '/programs', page: 'programs', crumb: 'Programs', title: 'Programs | Toddlers, Kids & Adult Jiu-Jitsu | Gonzales Jiu-Jitsu', description: 'Toddlers 4–5, Kids 6–13 and Adults from Fundamentals to Advanced. Gi and No-Gi, six days a week in Rio Rancho, NM. First class free.' },
   { path: '/schedule', page: 'schedule', crumb: 'Schedule', title: 'Class Schedule | Gonzales Jiu-Jitsu, Rio Rancho NM', description: 'Weekly Brazilian Jiu-Jitsu schedule: Toddlers, Kids, Adult Fundamentals, All Levels, Advanced and Open Mat, Monday to Saturday.' },
+  { path: '/offer', page: 'offer', crumb: 'Offer', title: 'Sign-up Special: Free Gi | Gonzales Jiu-Jitsu, Rio Rancho NM', description: 'The first 5 people who sign up at Gonzales Jiu-Jitsu, kids and adults, get a free gi. Book your free class in Rio Rancho, NM.' },
   { path: '/contact', page: 'contact', crumb: 'Contact', title: 'Contact & Free Class | Gonzales Jiu-Jitsu, Rio Rancho NM', description: '1630 Rio Rancho Blvd SE, Ste D, Rio Rancho, NM. Call 505-477-6612 or book your free class online.' },
 ]
 
@@ -104,6 +105,7 @@ export function llms() {
 - [Instructors](${url('/instructors')})
 - [Programs](${url('/programs')})
 - [Schedule](${url('/schedule')})
+- [Offer: free gi for the first 5 sign-ups](${url('/offer')})
 - [Contact & free class](${url('/contact')})
 `
 }

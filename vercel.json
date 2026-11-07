@@ -54,6 +54,10 @@
       "destination": "/schedule/index.html"
     },
     {
+      "source": "/offer",
+      "destination": "/offer/index.html"
+    },
+    {
       "source": "/contact",
       "destination": "/contact/index.html"
     },

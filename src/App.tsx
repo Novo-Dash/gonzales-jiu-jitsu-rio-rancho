@@ -7,6 +7,7 @@ import Contact from './pages/Contact'
 import Home from './pages/Home'
 import Instructors from './pages/Instructors'
 import NotFound from './pages/NotFound'
+import Offer from './pages/Offer'
 import Programs from './pages/Programs'
 import Schedule from './pages/Schedule'
 
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="/instructors" element={<Instructors />} />
         <Route path="/programs" element={<Programs />} />
         <Route path="/schedule" element={<Schedule />} />
+        <Route path="/offer" element={<Offer />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/book" element={<BookPage />} />
         <Route path="*" element={<NotFound />} />

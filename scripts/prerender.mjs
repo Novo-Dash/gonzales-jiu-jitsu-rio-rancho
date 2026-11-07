@@ -37,7 +37,7 @@ const { SITE, IS_PREVIEW, ROUTES, url, jsonLd, llms, MODIFIED, srcSetOf } = ssr
 const clean = (html) => html.replace(/<link rel="preload" as="image"[^>]*\/?>/g, '')
 
 // The LCP of each route: its hero photo.
-const LCP = { home: 'hero', about: 'hero', instructors: 'c-01', programs: 'kids', schedule: 'women', contact: 'roll' }
+const LCP = { home: 'hero', about: 'hero', instructors: 'c-01', programs: 'kids', schedule: 'women', offer: 'drill', contact: 'roll' }
 
 const head = (r) => {
   const u = url(r.path), og = `${SITE}/og.jpg`, t = esc(r.title), d = esc(r.description)

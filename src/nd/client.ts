@@ -7,7 +7,7 @@ export default {
     "address": "1630 Rio Rancho Blvd SE Ste D, Rio Rancho, NM 87124",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=1630%20Rio%20Rancho%20Blvd%20SE%20Ste%20D%2C%20Rio%20Rancho%2C%20NM%2087124",
     "logo": "/img/logo-white.png",
-    "photo": "/img/drill.webp"
+    "photo": "/img/coaches-mat.webp"
   },
   "ghl": {
     "locationId": "i3KtvdSaQ1QE31Hj8z7L",

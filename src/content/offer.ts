@@ -6,7 +6,7 @@ export const hero = {
   lead: 'The first 5 people who sign up, kids and adults, get a free gi. Start with your free class.',
   cta: 'Book your free class',
   micro: ['First 5 sign-ups', 'Kids & adults', 'First class free'],
-  img: 'drill',
+  img: 'coaches-mat',
   alt: 'Two coaches in their gis on the mat at Gonzales Jiu-Jitsu',
   pos: '50% 62%',
 }

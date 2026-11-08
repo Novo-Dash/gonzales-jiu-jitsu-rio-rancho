@@ -20,7 +20,7 @@ export const ages = {
       act: ['01', 'Ages 4–5 · 30 minutes'], title: ['Toddlers.', '<em>The first belt.</em>'],
       txt: 'Thirty minutes on the mat, three afternoons a week. Gi on Monday and Tuesday, No-Gi on Wednesday.',
       cta: 'Book a toddler class', prog: 'toddlers' },
-    { id: 'kids', k: 'k', from: '6', to: '13', age: '6–13', name: 'Kids', labelledby: 'ch-k', photo: 'drill', alt: 'Coaches working with kids on the mat', pos: '50% 60%',
+    { id: 'kids', k: 'k', from: '6', to: '13', age: '6–13', name: 'Kids', labelledby: 'ch-k', photo: 'drill', alt: 'Two coaches in their gis on the mat', pos: '50% 60%',
       act: ['02', 'Ages 6–13 · Gi & No-Gi'], title: ['Kids.', '<em>Self-defense first.</em>'],
       txt: 'Every weekday at five and Saturday morning. Taught by parents and Army veterans; Friday is the class for the kids who want to compete.',
       chips: ['Calm', 'Position', 'Escape', 'Confidence'],

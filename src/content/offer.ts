@@ -7,8 +7,8 @@ export const hero = {
   cta: 'Book your free class',
   micro: ['First 5 sign-ups', 'Kids & adults', 'First class free'],
   img: 'drill',
-  alt: 'Students in gis drilling on the mat at Gonzales Jiu-Jitsu',
-  pos: '50% 40%',
+  alt: 'Two coaches in their gis on the mat at Gonzales Jiu-Jitsu',
+  pos: '50% 62%',
 }
 
 export const offer = {

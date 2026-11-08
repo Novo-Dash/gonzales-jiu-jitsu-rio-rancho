@@ -27,7 +27,7 @@ export const zoom = {
     ['toddlers', 'Toddlers jiu-jitsu class for ages 4 to 5 in Rio Rancho, NM'],
     ['women', 'Women training jiu-jitsu at Gonzales Jiu-Jitsu'],
     ['roll', 'Two students rolling during open mat in Rio Rancho'],
-    ['drill', 'Coaches drilling technique with kids on the jiu-jitsu mat'],
+    ['drill', 'Two coaches in their gis on the jiu-jitsu mat in Rio Rancho'],
   ],
   eyebrow: 'Act I · Family',
   line: 'One mat. <em>Every age.</em>',
@@ -112,7 +112,7 @@ export const gallery = {
   label: 'Photos from Gonzales Jiu-Jitsu',
   photos: [
     ['c-01', 'The Gonzales Jiu-Jitsu team, kids and adults, under the crest'], ['c-02', 'A coach with two kids in their gis'], ['c-03', 'A coach talking to the kids class'],
-    ['c-04', 'A full class rolling under the flag'], ['c-05', 'Three kids drilling together'], ['c-06', 'A coach watching two students roll'],
+    ['c-04', 'A full class rolling under the flag'], ['c-05', 'Three kids drilling together'], ['c-06', 'Two coaches talking technique on the mat'],
     ['c-07', 'Students rolling while the class looks on'], ['c-08', 'A coach and a student in a guard exchange'], ['c-09', 'A student passing guard'],
     ['c-10', 'Two students rolling, gi and no-gi'], ['c-11', 'A sweep from bottom'], ['c-12', 'Two students on the mat after a roll'],
   ],

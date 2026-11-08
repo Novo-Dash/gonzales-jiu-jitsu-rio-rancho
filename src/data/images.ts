@@ -1,11 +1,11 @@
 // Natural size of every photo in public/img: each <img> carries it as width/height (PRD 0.4), so
 // the box is reserved before the file arrives and the rendered size is the prototype's.
 export const DIMS: Record<string, [number, number]> = {
-  abie: [768, 1024], adults: [1200, 1594], drill: [1200, 1593],
+  abie: [768, 1024], adults: [1200, 1594], drill: [1200, 1600],
   'face-1': [360, 360], 'face-2': [360, 360], 'face-3': [360, 360], 'face-4': [360, 360], 'face-5': [360, 360], 'face-6': [360, 360], 'face-7': [360, 360], 'face-8': [360, 360],
   flag: [1200, 1800], 'footer-poster': [960, 552], 'g-14': [243, 244],
   // from gonzalesjj.com (03/11): c- the home's community gallery, rm- the About room, tm- the team
-  'c-01': [1400, 1054], 'c-02': [678, 900], 'c-03': [1400, 754], 'c-04': [678, 900], 'c-05': [900, 616], 'c-06': [1054, 1400], 'c-07': [1054, 1400], 'c-08': [1054, 1400], 'c-09': [1344, 1400], 'c-10': [1054, 1400], 'c-11': [1054, 1400], 'c-12': [1054, 1400],
+  'c-01': [1400, 1054], 'c-02': [678, 900], 'c-03': [1400, 754], 'c-04': [678, 900], 'c-05': [900, 616], 'c-06': [1050, 1400], 'c-07': [1054, 1400], 'c-08': [1054, 1400], 'c-09': [1344, 1400], 'c-10': [1054, 1400], 'c-11': [1054, 1400], 'c-12': [1054, 1400],
   'rm-01': [678, 900], 'rm-02': [678, 900], 'rm-03': [678, 900], 'rm-04': [678, 900], 'rm-05': [678, 900], 'rm-06': [678, 900], 'rm-07': [678, 900], 'rm-08': [749, 900], 'rm-09': [678, 900], 'rm-10': [678, 900], 'rm-11': [678, 900], 'rm-12': [1054, 1400], 'rm-13': [1054, 1400], 'rm-14': [1400, 1242],
   // the Served cards (03/11): folded flags (Unsplash, Dottie Di Liddo), firefighters (Unsplash, Nejc Soklič)
   'serve-vets': [1400, 933], 'serve-fire': [1400, 788],
